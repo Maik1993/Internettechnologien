@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+
+<title>Buchshop24</title>
+</head>
+<!--  Beginn des Bodys -->
+<body>
+	<!--  Oberste Line mit Gruppennamen  -->
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">D2</a>
+
+		<!-- Oberste Leiste -->
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"><a class="nav-link" href="../../main.html">Startseite</a>
+			</li>
+		</ul>
+		
+		
+		<!--  Serveranfrage Suche -->
+		<form class="form-inline" action="/action_page.php">
+			<input class="form-control mr-sm-2" type="text"
+				placeholder="Suche...">
+			<button class="btn btn-success" type="submit">Suche</button>
+		</form>
+		
+		
+		<ul class="navbar-nav  ">
+			<li class="nav-item active "><a class="nav-link" href="../../Bestellung/warenkorb.html">Warenkorb</a>
+			</li>
+		</ul>
+	</nav>
+	<!--  Ende oberste Line mit Gruppennamen und Buchshop-Logo -->
+
+	<!--  Aufspaltung der Seite in Container  -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class=".col-sm-6 bg-light">
+				<!-- Beginn der Liste links -->
+				<nav class="navbar bg-light navbar-light ">
+					<ul class="nav flex-column">
+						<li class="nav-item"><a class="nav-link active" href="../../Warengruppen/krimis.html">Krimis</a>
+						</li>
+						<li class="nav-item"><a class="nav-link active" href="../../Warengruppen/kinderbuecher.html">Kinderb&uumlcher</a>
+						</li>
+						<li class="nav-item"><a class="nav-link active" href="../../Warengruppen/fachbuecher.html">Fachb&uumlcher</a>
+						</li>
+						<li class="nav-item"><a class="nav-link active" href="../../Warengruppen/romane.html">Romane</a>
+						</li>
+						<li class="nav-item"><a class="nav-link active" href="../../Warengruppen/thriller.html">Thriller</a>
+						</li>
+						
+					</ul>
+				</nav>
+
+			</div>
+			<!-- Ende der Liste links -->
+			
+			
+			<!-- Beginn Inhalt der Webseite -->
+			<div class="col bg-light">
+				<br> <br> <br>Das sind die Details zum Roman 3 <br> <br>
+				
+				<!--  Serverabfrage "Beliebte Buecher" -->
+				<table class="table table-striped">
+
+					<tbody>
+						<tr>
+							<th scope="row">3</th>
+							<td><img src="../../Bilder/Roman/3.jpg"  alt="Roman1" width="200" height="200"></td>
+							<td>Roman_Titel_3</td>
+							<td>Roman_Autor_3</td>
+							<td>10,00€</td>
+							<td><button type="button" class="btn btn-secondary">In den Warenkorb</button></td>
+						</tr>
+						
+					</tbody>
+				</table>
+				<p>ISBN: 513 </p>
+				<p>Dies ist Thriller 3 von Thriller_Autor_3.</p>
+				<p>Das Buch wurde 2002 veröffentlicht.</p>
+				<p>Es befindet sich in der 3. Auflage.</p>
+				<p>In dem Buch geht es um den Inhalt von Thriller 3.</p>
+			</div>
+
+
+			<!-- Ende Inhalt der Webseite -->
+		</div>
+
+		<!-- Anfang der Fußleiste -->
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col"></div>
+			<!-- Puffer für Buttons -->
+			
+			<!-- Serverabfrage Vor und Zurück -->
+			<div class="col">
+				<button type="button" class="btn btn-secondary">Zurück</button>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-secondary">Vorwärts</button>
+			</div>
+		</div>
+		
+		<!-- Fußleiste Impressum -->
+		<div class="row bg-dark .text-light">
+
+			<div class=".col-sm-6">
+				<p class="text-light">
+					Maik Habben <br> Tobias Scheermann <br> Rouven Hollens <br>
+			</div>
+			<div class=".col-sm-6">
+				<p class="text-light">
+					7009381 <br> 7009569 <br> 7008980 <br>
+			</div>
+			<div class=".col-sm-6">
+				<p class="text-light">
+					Internet-Technologien<br> Sommersemester 2018<br>
+			</div>
+			</p>
+		</div>
+	</div>
+	<!-- Ende der Fußleiste -->
+	<!--  Benötigt zum Ausführen von Javascript -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+</body>
+</html>
