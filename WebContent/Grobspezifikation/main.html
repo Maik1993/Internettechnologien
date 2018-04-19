@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">
 <head>
 
@@ -68,119 +68,116 @@
 
 			<!-- Beginn Inhalt der Webseite -->
 			<div class="col bg-light">
-				<div data-spy="scroll" data-target="#navbar-example2"
-					data-offset="0">
-					<br> <br> <br>Diese B&uumlcher sind zur Zeit total
-					beliebt <br> <br>
-					
-					
-					
-					
-					<!--  Serverabfrage "Beliebte Buecher" -->
-					<table class="table table-striped">
 
-						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td><img src="Bilder/Krimi/1.jpg" alt="Krimi1" width="80"
-									height="80"></td>
-								<td>Krimi_Titel_1</td>
-								<td>Krimi_Autor_1</td>
-								<td>10,00€</td>
-								<td>SendToWk</td>
-							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td><img src="Bilder/Kinder/1.jpg" alt="Kinder1" width="80"
-									height="80"></td>
-								<td>Kinder_Titel_1</td>
-								<td>Kinder_Autor_1</td>
-								<td>10,00€</td>
-								<td>SendToWk</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td><img src="Bilder/Fach/1.jpg" alt="Fach1" width="80"
-									height="80"></td>
-								<td>Fach_Titel_1</td>
-								<td>Fach_Autor_1</td>
-								<td>10,00€</td>
-								<td>SendToWk</td>
-							</tr>
-							<tr>
-								<th scope="row">4</th>
-								<td><img src="Bilder/Thriller/1.jpg" alt="Thriller1"
-									width="80" height="80"></td>
-								<td>Thriller_Titel_1</td>
-								<td>Thriller_Autor_1</td>
-								<td>10,00€</td>
-								<td>SendToWk</td>
-							</tr>
-							<tr>
-								<th scope="row">5</th>
-								<td><img src="Bilder/Roman/1.jpg" alt="Roman1" width="80"
-									height="80"></td>
-								<td>Roman_Titel_1</td>
-								<td>Roman_Autor_1</td>
-								<td>10,00€</td>
-								<td>SendToWk</td>
-							</tr>
-						</tbody>
-					</table>
+				<div class="row">
+					<div class="col-lg-3"></div>
+					<div class="col-lg-6">Die Bücher sind zurzeit total beliebt.</div>
+					<div class="col-lg-3"></div>
 				</div>
 
+				<div class="row">
 
-				<!-- Ende Inhalt der Webseite -->
+					<div class="col-lg-3"></div>
+
+					<div class=col-lg-6>
+
+						<div id="buchkarussel" class="carousel slide" data-ride="carousel">
+
+							<ul class="carousel-indicators">
+								<li data-target="#buchkarussel" data-slide-to="0" class="active"></li>
+								<li data-target="#buchkarussel" data-slide-to="1"></li>
+								<li data-target="#buchkarussel" data-slide-to="2"></li>
+								<li data-target="#buchkarussel" data-slide-to="3"></li>
+								<li data-target="#buchkarussel" data-slide-to="4"></li>
+							</ul>
+
+							<div class="carousel-inner">
+
+								<div class="carousel-item active">
+									<img src="Bilder/Krimi/1.jpg" alt="Krimi 1" width="500"
+										height="500">
+								</div>
+								<div class="carousel-item">
+									<img src="Bilder/Kinder/1.jpg" alt="Kinder 1" width="500"
+										height="500">
+								</div>
+								<div class="carousel-item">
+									<img src="Bilder/Fach/1.jpg" alt="Fach 1" width="500"
+										height="500">
+								</div>
+								<div class="carousel-item">
+									<img src="Bilder/Thriller/1.jpg" alt="Thriller 1" width="500"
+										height="500">
+								</div>
+								<div class="carousel-item">
+									<img src="Bilder/Roman/1.jpg" alt="Roman 1" width="500"
+										height="500">
+								</div>
+							</div>
+
+							<a class="carousel-control-prev" href="#buchkarussel"
+								data-slide="prev"> <span class="carousel-control-prev-icon"></span>
+							</a> <a class="carousel-control-next" href="#buchkarussel"
+								data-slide="next"> <span class="carousel-control-next-icon"></span>
+							</a>
+						</div>
+
+					</div>
+					<div class="col-lg-3"></div>
+				</div>
 			</div>
 
-			<!-- Anfang der Fußleiste -->
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col"></div>
-					<!-- Puffer für Buttons -->
 
-					<!-- Serverabfrage Vor und Zurück -->
-					<div class="col">
-						<button type="button" class="btn btn-secondary">Zurück</button>
-					</div>
-					<div class="col">
-						<button type="button" class="btn btn-secondary">Vorwärts</button>
-					</div>
+			<!-- Ende Inhalt der Webseite -->
+		</div>
+
+		<!-- Anfang der Fußleiste -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col"></div>
+				<!-- Puffer für Buttons -->
+
+				<!-- Serverabfrage Vor und Zurück -->
+				<div class="col">
+					<button type="button" class="btn btn-secondary">Zurück</button>
 				</div>
+				<div class="col">
+					<button type="button" class="btn btn-secondary">Vorwärts</button>
+				</div>
+			</div>
 
-				<!-- Fußleiste Impressum -->
-				<div class="row bg-dark .text-light">
+			<!-- Fußleiste Impressum -->
+			<div class="row bg-dark .text-light">
 
-					<div class=".col-sm-6">
-						<p class="text-light">
-							Maik Habben <br> Tobias Scheermann <br> Rouven Hollens
-							<br>
-					</div>
-					<div class=".col-sm-6">
-						<p class="text-light">
-							7009381 <br> 7009569 <br> 7008980 <br>
-					</div>
-					<div class=".col-sm-6">
-						<p class="text-light">
-							Internet-Technologien<br> Sommersemester 2018<br>
-					</div>
+				<div class=".col-sm-6">
+					<p class="text-light">
+						Maik Habben <br> Tobias Scheermann <br> Rouven Hollens <br>
+				</div>
+				<div class=".col-sm-6">
+					<p class="text-light">
+						7009381 <br> 7009569 <br> 7008980 <br>
+				</div>
+				<div class=".col-sm-6">
+					<p class="text-light">
+						Internet-Technologien<br> Sommersemester 2018<br>
 					</p>
 				</div>
 			</div>
 		</div>
 
-		<!-- Ende der Fußleiste -->
-		<!--  Benötigt zum Ausführen von Javascript -->
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-			crossorigin="anonymous"></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-			crossorigin="anonymous"></script>
-		<script
-			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-			crossorigin="anonymous"></script>
+	</div>
+	<!-- Ende der Fußleiste -->
+	<!--  Benötigt zum Ausführen von Javascript -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
 </body>
 </html>
