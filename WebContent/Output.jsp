@@ -9,7 +9,9 @@
 	String Jahr = (String) session.getAttribute("Jahr");
 	String Auflage = (String) session.getAttribute("Auflage");
 	String Inhalt = (String) session.getAttribute("Inhalt");
-	String KVS = (String) session.getAttribute("KVS");	
+	String KVS = (String) session.getAttribute("KVS");
+	String[] s = KVS.split("-");
+	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -28,19 +30,12 @@
 	Jahr <%= Jahr %> <br>
 	Auflage <%= Auflage %> <br>
 	Inhalt <%= Inhalt %> <br>
-	<br> <br> <br>
-	<%= Fachbereich %> ,
-	 <%= Titel %> ,
-	 <%= Autor %> ,
-	 <%= Preis%> ,
-	 <%= ISBN%> ,
-	 <%= Jahr%> ,
-	 <%= Auflage%> ,
-	 <%= Inhalt%> <br> <br> <br>
-	 <%= KVS %>
 	
-	
-	
+	<br>
+	<% for(String k : s) { %>
+	<%= k %> <br>
+	<% } %>
+		
 	</h3>
 	
 </body>

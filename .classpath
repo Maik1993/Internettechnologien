@@ -16,12 +16,12 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Maik/eclipse-workspace/Buchshop/WebContent/WEB-INF/lib/KeyValueStore.jar"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Workbench/Itech/WebContent/WEB-INF/lib/KeyValueStore.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
