@@ -2,7 +2,6 @@
     pageEncoding="ISO-8859-1"%>
     <% 	
  	String Titel = (String) session.getAttribute("Titel"); 
-	System.out.println(Titel);
  	String Fachbereich = (String) session.getAttribute("Fachbereich");
 	String Autor = (String) session.getAttribute("Autor");
 	String Preis = (String) session.getAttribute("Preis");
@@ -10,13 +9,7 @@
 	String Jahr = (String) session.getAttribute("Jahr");
 	String Auflage = (String) session.getAttribute("Auflage");
 	String Inhalt = (String) session.getAttribute("Inhalt");
-	
-	/*String Autor = (String) session.getAttribute("Autor"); 
-	System.out.println(Autor);
- 	
-	if(Titel == null){
-		response.sendRedirect("Bookedit.jsp");
- 	}*/
+	String KVS = (String) session.getAttribute("KVS");	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,7 +36,8 @@
 	 <%= ISBN%> ,
 	 <%= Jahr%> ,
 	 <%= Auflage%> ,
-	 <%= Inhalt%>
+	 <%= Inhalt%> <br> <br> <br>
+	 <%= KVS %>
 	
 	
 	

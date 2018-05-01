@@ -77,13 +77,16 @@ public class Datenbank extends HttpServlet {
 		
 		
 		
-		
 		KeyValueStore kvs = new KeyValueStore();
 		String key ="qRE5spZ9NYygM40e2MBda5N27GzOzQLVZxaA7rB2";
 		
 		String value = kvs.get(key);
 		System.out.println(value);
-		
+		request.setAttribute("KVS", "Hier ist was drin");
+		session.setAttribute("KVS", "Hier ist was drin");
+		request.setAttribute("KVS", value);
+		session.setAttribute("KVS", value);
+		System.out.println("Hallo");
 		RequestDispatcher req = request.getRequestDispatcher(address);
 		req.forward(request, response);
 	}

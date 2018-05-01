@@ -9,6 +9,7 @@
 </head>
 <body>
 <!-- Benötigte Informationen:
+	Fachbereich
 	Titel
 	Autor
 	Preis
