@@ -145,7 +145,7 @@ public class Datenbank extends HttpServlet {
 			} else if (current_param.equals("Jahr") && !hasError) {
 				// IllegalArgumentException
 				try {
-					SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+					SimpleDateFormat format = new SimpleDateFormat("yyyy");
 					format.parse(current_val);
 				} catch (ParseException e) {
 					hasError = true;
