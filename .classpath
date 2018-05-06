@@ -22,6 +22,8 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Workbench/Itech/WebContent/WEB-INF/lib/KeyValueStore.jar"/>
+	<classpathentry kind="lib" path="C:/ProgramData/apache-tomcat-8.5.29/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/KeyValueStore.jar"/>
+	<classpathentry kind="lib" path="C:/Users/TonyTulpe/Downloads/javaLibrarys/gson-master.zip"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
