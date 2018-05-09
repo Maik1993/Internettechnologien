@@ -15,6 +15,11 @@
 #Form-Ele {
 	padding-right: 25px;
 }
+.footer{
+	bottom:0;
+	position:absolute;
+	width:100%
+}
 </style>
 
 </head>
@@ -45,12 +50,11 @@
 	String buecher_genre = "";
 
 	if (request.getParameterNames() != null) {
-		
+
 		params = request.getParameterNames();
-		
+
 		String jsonBuecher = kvs.get(key);
 
-		
 		List<datenbank.Buch> buecher = json.fromJson(jsonBuecher, list_type.getType());
 
 		while (params.hasMoreElements()) {
@@ -69,11 +73,11 @@
 			ausgabe.put(current_p, buecher_genre);
 			buecher_genre = "";
 		}
-		
+
 	}
 %>
 <body>
-	<div class="container-fluid" style="padding: 0">
+	<div class="container-fluid align-buttom" style="padding: 0">
 		<!--  Oberste Line mit Gruppennamen  -->
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 			<!-- Brand -->
@@ -161,13 +165,13 @@
 				<%
 					Set<String> keySet = ausgabe.keySet();
 					Iterator<String> it_key = keySet.iterator();
-				
+
 					while (it_key.hasNext()) {
 						String current_key = it_key.next();
 						String current_val = ausgabe.get(current_key);
 				%>
-						<%=current_key%><br>
-						<%=current_val%><br>
+				<%=current_key%><br>
+				<%=current_val%><br>
 				<%
 					}
 				%>
@@ -180,39 +184,40 @@
 
 
 	<!-- Anfang der Fußleiste -->
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col"></div>
-			<!-- Puffer für Buttons -->
+	<footer class="footer">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col"></div>
+				<!-- Puffer für Buttons -->
 
-			<!-- Serverabfrage Vor und Zurück -->
-			<div class="col">
-				<button type="button" class="btn btn-secondary">Zurück</button>
+				<!-- Serverabfrage Vor und Zurück -->
+				<div class="col">
+					<button type="button" class="btn btn-secondary">Zurück</button>
+				</div>
+				<div class="col">
+					<button type="button" class="btn btn-secondary">Vorwärts</button>
+				</div>
 			</div>
-			<div class="col">
-				<button type="button" class="btn btn-secondary">Vorwärts</button>
+
+			<!-- Fußleiste Impressum -->
+			<div class="row bg-dark .text-light">
+
+				<div class=".col-sm-6">
+					<p class="text-light">
+						Maik Habben <br> Tobias Scheermann <br> Rouven Hollens <br>
+				</div>
+				<div class=".col-sm-6">
+					<p class="text-light">
+						7009381 <br> 7009569 <br> 7008980 <br>
+				</div>
+				<div class=".col-sm-6">
+					<p class="text-light">
+						Internet-Technologien<br> Sommersemester 2018<br>
+					</p>
+				</div>
 			</div>
 		</div>
-
-		<!-- Fußleiste Impressum -->
-		<div class="row bg-dark .text-light">
-
-			<div class=".col-sm-6">
-				<p class="text-light">
-					Maik Habben <br> Tobias Scheermann <br> Rouven Hollens <br>
-			</div>
-			<div class=".col-sm-6">
-				<p class="text-light">
-					7009381 <br> 7009569 <br> 7008980 <br>
-			</div>
-			<div class=".col-sm-6">
-				<p class="text-light">
-					Internet-Technologien<br> Sommersemester 2018<br>
-				</p>
-			</div>
-		</div>
-	</div>
-
+	</footer>
 
 	<!-- Ende der Fußleiste -->
 
