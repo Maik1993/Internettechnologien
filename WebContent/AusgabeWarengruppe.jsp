@@ -15,10 +15,11 @@
 #Form-Ele {
 	padding-right: 25px;
 }
-.footer{
-	bottom:0;
-	position:absolute;
-	width:100%
+
+.footer {
+	bottom: 0;
+	position: absolute;
+	width: 100%
 }
 </style>
 
@@ -85,7 +86,7 @@
 			<!-- Oberste Leiste -->
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link"
-					href="main.html">Startseite</a></li>
+					href="Grobspezifikation/main.html">Startseite</a></li>
 			</ul>
 
 
@@ -99,9 +100,9 @@
 
 			<ul class="navbar-nav  ">
 				<li class="nav-item active "><a class="nav-link"
-					href="Bestellung/warenkorb.html">Warenkorb</a></li>
+					href="Grobspezifikation/Bestellung/warenkorb.html">Warenkorb</a></li>
 				<li class="nav-item active "><a class="nav-link"
-					href="../Bookedit.jsp">Login</a></li>
+					href="Bookedit.jsp">Login</a></li>
 			</ul>
 		</nav>
 		<!--  Ende oberste Line mit Gruppennamen und Buchshop-Logo -->
@@ -113,78 +114,107 @@
 			<!-- Anzeige der möglichen Warengruppen -->
 
 			<div class="col-lg-12">
+				
 
+					<form method="post" class="form-inline"
+						action="AusgabeWarengruppe.jsp" style="padding-top: 5px">
 
-				<form method="post" class="form-inline"
-					action="AusgabeWarengruppe.jsp" style="padding-top: 5px">
+						<h2 id="Form-Ele">Warengruppen:</h2>
 
-					<h2 id="Form-Ele">Warengruppen:</h2>
+						<div class="form-check" id="Form-Ele">
+							<label class="form-check-label"> <input
+								class="form-check-input" type="checkbox" name="Krimi">
+								Krimis
+							</label>
+						</div>
 
-					<div class="form-check" id="Form-Ele">
-						<label class="form-check-label"> <input
-							class="form-check-input" type="checkbox" name="Krimi">
-							Krimis
-						</label>
-					</div>
+						<div class="form-check" id="Form-Ele">
+							<label class="form-check-label"> <input
+								class="form-check-input" type="checkbox" name="Fach">
+								Fachbücher
+							</label>
+						</div>
 
-					<div class="form-check" id="Form-Ele">
-						<label class="form-check-label"> <input
-							class="form-check-input" type="checkbox" name="Fach">
-							Fachbücher
-						</label>
-					</div>
+						<div class="form-check" id="Form-Ele">
+							<label class="form-check-label"> <input
+								class="form-check-input" type="checkbox" name="Kinder">
+								Kinderbücher
+							</label>
+						</div>
 
-					<div class="form-check" id="Form-Ele">
-						<label class="form-check-label"> <input
-							class="form-check-input" type="checkbox" name="Kinder">
-							Kinderbücher
-						</label>
-					</div>
+						<div class="form-check" id="Form-Ele">
+							<label class="form-check-label"> <input
+								class="form-check-input" type="checkbox" name="Roman">
+								Romane
+							</label>
+						</div>
 
-					<div class="form-check" id="Form-Ele">
-						<label class="form-check-label"> <input
-							class="form-check-input" type="checkbox" name="Roman">
-							Romane
-						</label>
-					</div>
+						<div class="form-check" id="Form-Ele">
+							<label class="form-check-label"> <input
+								class="form-check-input" type="checkbox" name="Thriller">
+								Thriller
+							</label>
+						</div>
 
-					<div class="form-check" id="Form-Ele">
-						<label class="form-check-label"> <input
-							class="form-check-input" type="checkbox" name="Thriller">
-							Thriller
-						</label>
-					</div>
+						<button type="submit" class="btn btn-primary">Anzeigen</button>
 
-					<button type="submit" class="btn btn-primary">Ausgeben!</button>
+					</form>
+					<hr>
+					<!-- Ende Auswahl der benötigten Warengruppe zu Auswahl -->
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Fachbereich</th>
+								<th>Titel</th>
+								<th>Autor</th>
+								<th>Preis</th>
+								<th>ISBN</th>
+								<th>Jahr</th>
+								<th>Auflage</th>
+								<th>Inhalt</th>
 
-				</form>
-				<hr>
-				<!-- Ende Auswahl der benötigten Warengruppe zu Auswahl -->
+							</tr>
+						</thead>
+						<tbody>
 
+							<%
+								Set<String> keySet = ausgabe.keySet();
+								Iterator<String> it_key = keySet.iterator();
 
-				<%
-					Set<String> keySet = ausgabe.keySet();
-					Iterator<String> it_key = keySet.iterator();
+								while (it_key.hasNext()) {
+									String current_key = it_key.next();
+									String current_val = ausgabe.get(current_key);
+									String[] buecher = current_val.split("}");
 
-					while (it_key.hasNext()) {
-						String current_key = it_key.next();
-						String current_val = ausgabe.get(current_key);
-				%>
-				<%=current_key%><br>
-				<%=current_val%><br>
-				<%
-					}
-				%>
+									for (int i = 0; i < buecher.length; i++) {
+							%>
+							<tr>
+								<%
+									String bucher = buecher[i].replaceAll("[^a-zA-Z 0-9 .:, ]", "");
+											String tmp = bucher.replaceAll(":", ": ");
+											String[] buch = tmp.split(",");
+											for (int j = 0; j < buch.length; j++) {
+								%>
+								<td><%=buch[j]%></td>
+								<%
+									}
+								%>
+							</tr>
+							<%
+								}
+								}
+							%>
+						</tbody>
+					</table>
+				</div>
 
 			</div>
-			<hr>
-
 		</div>
 	</div>
 
 
 	<!-- Anfang der Fußleiste -->
-	<footer class="footer">
+	
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col"></div>
@@ -217,7 +247,7 @@
 				</div>
 			</div>
 		</div>
-	</footer>
+
 
 	<!-- Ende der Fußleiste -->
 
