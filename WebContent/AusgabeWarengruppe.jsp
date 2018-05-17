@@ -77,6 +77,7 @@
 
 	}
 %>
+
 <body>
 	<div class="container-fluid align-buttom" style="padding: 0">
 		<!--  Oberste Line mit Gruppennamen  -->
@@ -106,6 +107,33 @@
 			</ul>
 		</nav>
 		<!--  Ende oberste Line mit Gruppennamen und Buchshop-Logo -->
+		
+	<!--  Aufspaltung der Seite in Container  -->
+	<div class="container-fluid">
+		<div class="row">
+				<div class=".col-lg-6 bg-light">
+					<!-- Beginn der Liste links -->
+					<nav class="navbar bg-light navbar-light ">
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link active"
+								href="Grobspezifikation/Warengruppen/krimis.html">Krimis</a></li>
+							<li class="nav-item"><a class="nav-link active"
+								href="Grobspezifikation/Warengruppen/kinderbuecher.html">Kinderb&uumlcher</a></li>
+							<li class="nav-item"><a class="nav-link active"
+								href="Grobspezifikation/Warengruppen/fachbuecher.html">Fachb&uumlcher</a></li>
+							<li class="nav-item"><a class="nav-link active"
+								href="Grobspezifikation/Warengruppen/romane.html">Romane</a></li>
+							<li class="nav-item"><a class="nav-link active"
+								href="Grobspezifikation/Warengruppen/thriller.html">Thriller</a></li>
+									<li class="nav-item"><a class="nav-link active"
+							href="AusgabeWarengruppe.jsp">Alle Warengruppen</a></li>
+
+						</ul>
+					</nav>
+
+				</div>
+				<!-- Ende der Liste links -->
+		
 
 		<!-- Auswahl der benötigten Warengruppe zu Auswahl -->
 
@@ -113,10 +141,9 @@
 
 			<!-- Anzeige der möglichen Warengruppen -->
 
-			<div class="col-lg-12">
-				
+			<div class="col-sm-12">
 
-					<form method="post" class="form-inline"
+			<form method="post" class="form-inline"
 						action="AusgabeWarengruppe.jsp" style="padding-top: 5px">
 
 						<h2 id="Form-Ele">Warengruppen:</h2>
@@ -190,7 +217,7 @@
 							%>
 							<tr>
 								<%
-									String bucher = buecher[i].replaceAll("[^a-zA-Z 0-9 .:, ]", "");
+											String bucher = buecher[i].replaceAll("[^a-zA-Z 0-9 .:, ]", "");
 											String tmp = bucher.replaceAll(":", ": ");
 											String[] buch = tmp.split(",");
 											for (int j = 0; j < buch.length; j++) {
@@ -247,6 +274,7 @@
 				</div>
 			</div>
 		</div>
+</div>
 
 
 	<!-- Ende der Fußleiste -->
