@@ -238,6 +238,7 @@
 								<th>ISBN</th>
 								<th>Jahr</th>
 								<th>Auflage</th>
+								<th>Inhalt</th>
 
 							</tr>
 						</thead>
