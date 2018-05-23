@@ -90,7 +90,7 @@ public class Datenbank extends HttpServlet {
 		String ISBN = request.getParameter("ISBN");
 		String Jahr = request.getParameter("Jahr");
 		String Auflage = request.getParameter("Auflage");
-		String Inhalt = request.getParameter("Inahlt");
+		String Inhalt = request.getParameter("Inhalt");
 		
 		
 		boolean contains = false;
