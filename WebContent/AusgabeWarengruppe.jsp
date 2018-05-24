@@ -40,7 +40,7 @@
 
 <%@ page import="java.io.StringReader"%>
 <%
-	//Key für value-store
+	//Key
 	String key = "lBenYS9JqrKN2ld8dlkmICXiEVmYQPaIWDKid762";
 	KeyValueStore kvs = new KeyValueStore();
 	TypeToken<List<datenbank.Buch>> list_type = new TypeToken<List<datenbank.Buch>>() {
