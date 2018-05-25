@@ -19,10 +19,12 @@
 <%@ page import="de.imut.ec.keyvaluestore.KeyValueStore"%>
 <%@ page import="datenbank.Buch"%>
 
+<%@ page import="java.util.Enumeration"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Set"%>
 <%@ page import="java.util.TreeSet"%>
+<%@ page import="java.util.HashMap"%>
 
 <%@ page import="com.google.gson.Gson"%>
 <%@ page import="com.google.gson.reflect.TypeToken"%>
@@ -30,32 +32,39 @@
 <%@ page import="java.util.Iterator"%>
 
 <%
+	String button = (String) session.getAttribute("button");
+	String buecher = (String) session.getAttribute("Buecher");
+
 	KeyValueStore kvs = new KeyValueStore();
 	String key = "lBenYS9JqrKN2ld8dlkmICXiEVmYQPaIWDKid762";
 	String buecher_gson = "";
 	ArrayList<datenbank.Buch> array_buecher = new ArrayList<datenbank.Buch>();
 	Gson json = new Gson();
-	TypeToken<List<datenbank.Buch>> list_type = new TypeToken<List<datenbank.Buch>>() {};
+	TypeToken<List<datenbank.Buch>> list_type = new TypeToken<List<datenbank.Buch>>() {
+	};
 	Set<String> genres = new TreeSet<String>();
 	String fachbereich = "";
-	try{
+
+	try {
 		buecher_gson = kvs.get(key);
 		array_buecher = json.fromJson(buecher_gson, list_type.getType());
-		
-		for(int i = 0 ; i < array_buecher.size(); i++){
-			
+
+		for (int i = 0; i < array_buecher.size(); i++) {
 			Buch b = array_buecher.get(i);
 			String genre = b.getFachbereich();
 			genres.add(genre);
-			
+
 		}
 		
-		
-	}catch(NullPointerException e){
-		
-	}
+	} catch (NullPointerException e) {
 
+	}
 %>
+<!-- 
+
+
+ -->
+
 <body>
 
 	<!--  Oberste Line mit Gruppennamen  -->
@@ -65,8 +74,10 @@
 
 		<!-- Oberste Leiste -->
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="main.html">Startseite</a>
-			</li>
+			<form action="Warengruppe" methode="get">
+					<input type="submit" class="btn btn-link btn-lg text-white" name="buttonStart"
+						value="Startseite" /><br>
+			</form>
 		</ul>
 
 
@@ -94,74 +105,149 @@
 				<h2>Fachbereiche:</h2>
 				<%
 					Iterator<String> it_genres = genres.iterator();
-					
-					while(it_genres.hasNext()){
-						
+
+					while (it_genres.hasNext()) {
 						fachbereich = it_genres.next();
-					%>
-				<a href=""><%="  "+ fachbereich %><br></a>
-				<%}
+				%>
+				<form action="Warengruppe" methode="get">
+					<input type="submit" class="btn btn-link btn-lg" name="<%=fachbereich%>"
+						value="<%="  " + fachbereich%>" /><br>
+				</form>
+				<%
+					}
 				%>
 			</div>
-			<div class="col-lg-8">
-				<div class="row">
-					<div class="col-lg-3"></div>
-					<div class="col-lg-6">Die Bücher sind zurzeit total beliebt.</div>
-					<div class="col-lg-3"></div>
-				</div>
+			<%
+				if (button == null) {
+			%>
 
-				<div class="row">
 
-					<div class="col-lg-3"></div>
+			<!-- muss noch weg -->
+			<div class="container">
+				<div class="col-lg-8">
+					<div class="row">
+						<div class="col-lg-3"></div>
+						<div class="col-lg-6">Die Bücher sind zurzeit total beliebt.</div>
+						<div class="col-lg-3"></div>
+					</div>
 
-					<div class=col-lg-8>
+					<div class="row">
 
-						<div id="buchkarussel" class="carousel slide" data-ride="carousel">
+						<div class="col-lg-3"></div>
 
-							<ul class="carousel-indicators">
-								<li data-target="#buchkarussel" data-slide-to="0" class="active"></li>
-								<li data-target="#buchkarussel" data-slide-to="1"></li>
-								<li data-target="#buchkarussel" data-slide-to="2"></li>
-								<li data-target="#buchkarussel" data-slide-to="3"></li>
-								<li data-target="#buchkarussel" data-slide-to="4"></li>
-							</ul>
+						<div class=col-lg-8>
 
-							<div class="carousel-inner">
+							<div id="buchkarussel" class="carousel slide"
+								data-ride="carousel">
 
-								<div class="carousel-item active">
-									<img src="Grobspezifikation/Bilder/Krimi/1.jpg" alt="Krimi 1" width="500"
-										height="500">
+								<ul class="carousel-indicators">
+									<li data-target="#buchkarussel" data-slide-to="0"
+										class="active"></li>
+									<li data-target="#buchkarussel" data-slide-to="1"></li>
+									<li data-target="#buchkarussel" data-slide-to="2"></li>
+									<li data-target="#buchkarussel" data-slide-to="3"></li>
+									<li data-target="#buchkarussel" data-slide-to="4"></li>
+								</ul>
+
+								<div class="carousel-inner">
+
+									<div class="carousel-item active">
+										<img src="Grobspezifikation/Bilder/Krimi/1.jpg" alt="Krimi 1"
+											width="500" height="500">
+									</div>
+									<div class="carousel-item">
+										<img src="Grobspezifikation/Bilder/Kinder/1.jpg"
+											alt="Kinder 1" width="500" height="500">
+									</div>
+									<div class="carousel-item">
+										<img src="Grobspezifikation/Bilder/Fach/1.jpg" alt="Fach 1"
+											width="500" height="500">
+									</div>
+									<div class="carousel-item">
+										<img src="Grobspezifikation/Bilder/Thriller/1.jpg"
+											alt="Thriller 1" width="500" height="500">
+									</div>
+									<div class="carousel-item">
+										<img src="Grobspezifikation/Bilder/Roman/1.jpg" alt="Roman 1"
+											width="500" height="500">
+									</div>
 								</div>
-								<div class="carousel-item">
-									<img src="Grobspezifikation/Bilder/Kinder/1.jpg" alt="Kinder 1" width="500"
-										height="500">
-								</div>
-								<div class="carousel-item">
-									<img src="Grobspezifikation/Bilder/Fach/1.jpg" alt="Fach 1" width="500"
-										height="500">
-								</div>
-								<div class="carousel-item">
-									<img src="Grobspezifikation/Bilder/Thriller/1.jpg" alt="Thriller 1" width="500"
-										height="500">
-								</div>
-								<div class="carousel-item">
-									<img src="Grobspezifikation/Bilder/Roman/1.jpg" alt="Roman 1" width="500"
-										height="500">
-								</div>
+
+								<a class="carousel-control-prev" href="#buchkarussel"
+									data-slide="prev"> <span class="carousel-control-prev-icon"></span>
+								</a> <a class="carousel-control-next" href="#buchkarussel"
+									data-slide="next"> <span class="carousel-control-next-icon"></span>
+								</a>
 							</div>
 
-							<a class="carousel-control-prev" href="#buchkarussel"
-								data-slide="prev"> <span class="carousel-control-prev-icon"></span>
-							</a> <a class="carousel-control-next" href="#buchkarussel"
-								data-slide="next"> <span class="carousel-control-next-icon"></span>
-							</a>
 						</div>
-
+						<div class="col-lg-3"></div>
 					</div>
-					<div class="col-lg-3"></div>
+				</div>
+				<div class="col-lg-2"></div>
+			</div>
+			<%
+				} else {
+
+					String[] s = buecher.split("}");
+			%>
+			<div class="row">
+				<div class="col-lg-12">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Fachbereich</th>
+								<th>Titel</th>
+								<th>Autor</th>
+								<th>Preis</th>
+								<th>ISBN</th>
+								<th>Jahr</th>
+								<th>Auflage</th>
+								<th>Inhalt</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<%
+								for (int i = s.length - 1; i > 0; i--) {
+										String[] sBuch = s[i].split(",");
+							%>
+							<tr>
+								<%
+									for (int j = 0; j < sBuch.length; j++) {
+												String output = (String) sBuch[j];
+												if (j == 3) {
+													output = output + " Euro";
+												}
+												// Dient zur besseren Darstellung
+												String tmp = output.replaceAll("[^a-zA-Z 0-9 .: ]", "");
+												String tmp2 = tmp.replaceAll("Fachbereich", "");
+												tmp = tmp2.replaceAll("Titel", "");
+												tmp2 = tmp.replaceAll("Autor", "");
+												tmp = tmp2.replaceAll("Preis", "");
+												tmp2 = tmp.replaceAll("ISBN", "");
+												tmp = tmp2.replaceAll("Jahr", "");
+												tmp2 = tmp.replaceAll("Auflage", "");
+												tmp = tmp2.replaceAll("Inhalt", "");
+												output = tmp.replace(":", "");
+								%>
+								<td><%=output%></td>
+								<%
+									}
+								%>
+							</tr>
+							<%
+								}
+							%>
+						</tbody>
+					</table>
 				</div>
 			</div>
-			<div class="col-lg-2"></div>
+
+			<%
+				}
+			%>
+
 		</div>
 
 	</div>
