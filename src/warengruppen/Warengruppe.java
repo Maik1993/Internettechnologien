@@ -1,4 +1,4 @@
-package datenbank;
+package warengruppen;
 
 
 import java.io.IOException;
@@ -22,6 +22,7 @@ import org.apache.jasper.tagplugins.jstl.core.Out;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import datenbank.Buch;
 import de.imut.ec.keyvaluestore.KeyValueStore;
 
 /**
