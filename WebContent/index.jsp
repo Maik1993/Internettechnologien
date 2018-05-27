@@ -252,18 +252,40 @@
 		</div>
 
 	</div>
-	<!--  Benötigt zum Ausführen von Javascript -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-		crossorigin="anonymous"></script>
-</body>
+	<!-- Anfang der Fußleiste -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col"></div>
+			<!-- Puffer für Buttons -->
 
+			<!-- Serverabfrage Vor und Zurück -->
+			<div class="col">
+				<button type="button" class="btn btn-secondary">Zurück</button>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-secondary">Vorwärts</button>
+			</div>
+		</div>
+		<!-- Fußleiste Impressum -->
+		<div class="row bg-dark .text-light">
+
+			<div class=".col-sm-6">
+				<p class="text-light">
+					Maik Habben <br> Tobias Scheermann <br> Rouven Hollens <br>
+			</div>
+			<div class=".col-sm-6">
+				<p class="text-light">
+					7009381 <br> 7009569 <br> 7008980 <br>
+			</div>
+			<div class=".col-sm-6">
+				<p class="text-light">
+					Internet-Technologien<br> Sommersemester 2018<br>
+				</p>
+			</div>
+		</div>
+	</div>
+	<!-- 
+				Methode für die Ausgabe der Bücher-Datenbank 
+			 -->
+</body>
 </html>
