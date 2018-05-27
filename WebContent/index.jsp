@@ -32,9 +32,14 @@
 <%@ page import="java.util.Iterator"%>
 
 <%
-	String button = (String) session.getAttribute("button");
-System.out.println(button);
+	String button = "start";
+	button = (String) session.getAttribute("button");
+	System.out.println(button);
+	if(button==null){
+		button="start";		
+	}
 	String buecher = (String) session.getAttribute("Buecher");
+	
 	KeyValueStore kvs = new KeyValueStore();
 	String key = "lBenYS9JqrKN2ld8dlkmICXiEVmYQPaIWDKid762";
 	String buecher_gson = "";
