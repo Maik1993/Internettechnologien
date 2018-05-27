@@ -43,173 +43,269 @@
 <title>Bücherverwaltung</title>
 </head>
 <body>
+	<!--  Oberste Line mit Gruppennamen  -->
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark"> <!-- Brand -->
+	<a class="navbar-brand" href="#">D2</a> <!-- Oberste Leiste -->
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item active"><a class="nav-link"
+			href="index.jsp">Startseite</a></li>
+	</ul>
 
 
-	<!-- Benötigte Informationen:
-	Fachbereich
-	Titel
-	Autor
-	Preis
-	ISBN
-	Veröffentlichungsdatum
-	Auflage
-	(Inhalt)
+	<!--  Serveranfrage Suche -->
+	<form class="form-inline" action="/action_page.php">
+		<input class="form-control mr-sm-2" type="text" placeholder="Suche...">
+		<button class="btn btn-success" type="submit">Suche</button>
+	</form>
 
- -->
-	<%
-		if (error) {
-	%>
-	<h2>BITTE ANGABEN ÜBERPRÜFEN!</h2>
-	<%
-		}
-	%>
+
+	<ul class="navbar-nav  ">
+		<li class="nav-item active "><a class="nav-link"
+			href="Grobspezifikation/Bestellungen/warenkorb.html">Warenkorb</a></li>
+		<li class="nav-item active "><a class="nav-link"
+			href="Bookedit.jsp">Login</a></li>
+	</ul>
+	</nav>
+	<!--  Ende oberste Line mit Gruppennamen und Buchshop-Logo -->
+
+	<!--  Aufspaltung der Seite in Container  -->
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12">
-				<h3>Buecher hinzufuegen</h3>
-				<form method="POST" action="Datenbank">
 
-					<div class="form-group">
+		<!-- Ende der Liste links -->
 
-						<input type="hidden" class="form-control" name="put">
+		<!-- Benötigte Informationen:
+							Fachbereich
+							Titel
+							Autor
+							Preis
+							ISBN
+							Veröffentlichungsdatum
+							Auflage
+							(Inhalt)
+						
+						 -->
+
+		<div class="col-sm-8 ">
+
+			<%
+				if (error) {
+			%>
+			<h2>BITTE ANGABEN ÜBERPRÜFEN!</h2>
+			<%
+				}
+			%>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>Bücher hinzufügen</h3>
+						<form method="POST" action="Datenbank">
+
+							<div class="form-group">
+
+								<input type="hidden" class="form-control" name="put">
+							</div>
+							<div class="row">
+								<div class="col-lg-3">
+									<div class="form-group">
+										<label for="exampleFormControlSelect1">Fachbereich</label> <select
+											class="form-control" name="Fachbereich">
+											<option><%=Fachbereich%>
+											<option>Krimi</option>
+											<option>Kinder</option>
+											<option>Fach</option>
+											<option>Roman</option>
+											<option>Thriller</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-3">
+									<div class="form-group">
+										<!-- Titel -->
+
+										<label for="formGroupExampleInput">Buchtitel: </label> <br>
+										<input type="text" class="form-control" name="Titel"
+											value=<%=Titel%>>
+
+									</div>
+								</div>
+								<div class="col-lg-3">
+									<div class="form-group">
+										<!-- Autor -->
+
+										<label for="formGroupExampleInput">Autor: </label> <br> <input
+											type="text" class="form-control" name="Autor"
+											value=<%=Autor%>>
+
+									</div>
+								</div>
+								<div class="col-lg-3">
+									<div class="form-group">
+										<!-- Preis -->
+
+										<label for="formGroupExampleInput">Preis: </label> <br> <input
+											type="text" class="form-control" name="Preis"
+											value=<%=Preis%>>
+
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-3">
+									<div class="form-group">
+										<!-- ISBN -->
+										<label for="formGroupExampleInput">ISBN: </label> <br> <input
+											type="text" class="form-control" name="ISBN" value=<%=ISBN%>>
+									</div>
+								</div>
+								<div class="col-lg-3">
+									<div class="form-group">
+										<!-- Jahr -->
+										<label for="formGroupExampleInput">Veröffentlichungsjahr:
+										</label> <br> <input type="text" class="form-control" name="Jahr"
+											value=<%=Jahr%>>
+									</div>
+								</div>
+								<div class="col-lg-3">
+									<div class="form-group">
+										<!-- Auflage -->
+										<label for="formGroupExampleInput">Auflage: </label> <br>
+										<input type="text" class="form-control" name="Auflage"
+											value=<%=Auflage%>>
+									</div>
+								</div>
+								<div class="col-lg-3">
+									<div class="form-group">
+										<!-- Inhalt -->
+										<label for="formGroupExampleInput">Inhalt: </label> <br>
+										<input type="text" class="form-control" name="Inhalt"
+											value=<%=Inhalt%>>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-3">
+									<input type="submit" id="login_button" value="Absenden"
+										class="btn btn-primary btn-lg btn-block login-button">
+								</div>
+								<div class="col-lg-9"></div>
+
+							</div>
+						</form>
 					</div>
-					<div class="row">
-						<div class="col-lg-3">
-							<div class="form-group">
-								<label for="exampleFormControlSelect1">Fachbereich</label> <select
-									class="form-control" name="Fachbereich">
-									<option><%=Fachbereich%>
-									<option>Krimi</option>
-									<option>Kinder</option>
-									<option>Fach</option>
-									<option>Roman</option>
-									<option>Thriller</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="form-group">
-								<!-- Titel -->
+				</div>
 
-								<label for="formGroupExampleInput">Buchtitel: </label> <br>
-								<input type="text" class="form-control" name="Titel"
-									value=<%=Titel%>>
+				<hr>
 
-							</div>
-						</div>
-						<div class="col-lg-3">
+				<div class="row">
+					<div class="col-lg-3">
+						<h3>Buch löschen</h3>
+						<form method="POST" action="Datenbank">
 							<div class="form-group">
-								<!-- Autor -->
-
-								<label for="formGroupExampleInput">Autor: </label> <br> <input
-									type="text" class="form-control" name="Autor" value=<%=Autor%>>
-
+								<input type="hidden" name="delete">
 							</div>
-						</div>
-						<div class="col-lg-3">
 							<div class="form-group">
-								<!-- Preis -->
-
-								<label for="formGroupExampleInput">Preis: </label> <br> <input
-									type="text" class="form-control" name="Preis" value=<%=Preis%>>
-
+								<label for="isbn">ISBN:</label><br> <input type="text"
+									class="form-control" id="isbn" name="isbn">
 							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-3">
-							<div class="form-group">
-								<!-- ISBN -->
-								<label for="formGroupExampleInput">ISBN: </label> <br> <input
-									type="text" class="form-control" name="ISBN" value=<%=ISBN%>>
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="form-group">
-								<!-- Jahr -->
-								<label for="formGroupExampleInput">Veröffentlichungsjahr:
-								</label> <br> <input type="text" class="form-control" name="Jahr"
-									value=<%=Jahr%>>
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="form-group">
-								<!-- Auflage -->
-								<label for="formGroupExampleInput">Auflage: </label> <br> <input
-									type="text" class="form-control" name="Auflage"
-									value=<%=Auflage%>>
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="form-group">
-								<!-- Inhalt -->
-								<label for="formGroupExampleInput">Inhalt: </label> <br> <input
-									type="text" class="form-control" name="Inhalt"
-									value=<%=Inhalt%>>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-3">
-							<input type="submit" id="login_button" value="Absenden"
+							<input type="submit" id="delete_button" value="Löschen"
 								class="btn btn-primary btn-lg btn-block login-button">
-						</div>
-						<div class="col-lg-9"></div>
-
+						</form>
 					</div>
-				</form>
-			</div>
-		</div>
+					<div class="col-lg-9"></div>
+					<br>
+				</div>
+				<hr>
 
-		<hr>
+				<div class="row"></div>
 
-		<div class="row">
-			<div class="col-lg-3">
-				<h3>Buch loeschen</h3>
-				<form method="POST" action="Datenbank">
-					<div class="form-group">
-						<input type="hidden" name="delete">
-					</div>
-					<div class="form-group">
-						<label for="isbn">ISBN:</label><br> <input type="text"
-							class="form-control" id="isbn" name="isbn">
-					</div>
-					<input type="submit" id="delete_button" value="Löschen"
-						class="btn btn-primary btn-lg btn-block login-button">
-				</form>
-			</div>
-			<div class="col-lg-9"></div>
-			<br>
-		</div>
-		<hr>
-
-		<div class="row">
-			<div class="log-lg-12">
-				<div class="container">
-					<h3>Vorhandene Buecher:</h3>
-					<table class="table table-bordered">
+			
+			<div class="row">
+				<div class="col-lg-12">
+					<h3>Bücher-Datenbank</h3>
+					<%@ page import="de.imut.ec.keyvaluestore.KeyValueStore"%>
+					<%
+						KeyValueStore kvs = new KeyValueStore();
+						String sKVS = kvs.get(key);
+						String[] s = sKVS.split("}");
+					%>
+					<table class="table">
 						<thead>
 							<tr>
-								<th>Key:</th>
-								<th><%=key%></th>
-							</tr>
-							<tr>
-								<th>Buecher:</th>
-								<%@ page import="de.imut.ec.keyvaluestore.KeyValueStore"%>
-								<%
-									KeyValueStore kvs = new KeyValueStore();
-								%>
-								<%
-									KVS = kvs.get(key);
-								%>
-								<th><%=KVS%></th>
+								<th>Fachbereich</th>
+								<th>Titel</th>
+								<th>Autor</th>
+								<th>Preis</th>
+								<th>ISBN</th>
+								<th>Jahr</th>
+								<th>Auflage</th>
+
 							</tr>
 						</thead>
+						<tbody>
+							<%
+								for (int i = s.length - 1; i > 0; i--) {
+									String[] sBuch = s[i].split(",");
+							%>
+							<tr>
+								<%
+									for (int j = 1; j < sBuch.length; j++) {
+											String output = (String) sBuch[j];
+											if (j == 4) {
+												output = output + " Euro";
+											}
+											String tmp = output.replaceAll("[^a-zA-Z 0-9 .: ]", "");
+											output = tmp.replace(":", ": ");
+								%>
+								<td><%=output%></td>
+								<%
+									}
+								%>
+							</tr>
+							<%
+								}
+							%>
+						</tbody>
 					</table>
 				</div>
 			</div>
+			</div>
 		</div>
 	</div>
+	</div>
+	<!-- Anfang der Fußleiste -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col"></div>
+			<!-- Puffer für Buttons -->
 
+			<!-- Serverabfrage Vor und Zurück -->
+			<div class="col">
+				<button type="button" class="btn btn-secondary">Zurück</button>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-secondary">Vorwärts</button>
+			</div>
+		</div>
+		<!-- Fußleiste Impressum -->
+		<div class="row bg-dark .text-light">
+
+			<div class=".col-sm-6">
+				<p class="text-light">
+					Maik Habben <br> Tobias Scheermann <br> Rouven Hollens <br>
+			</div>
+			<div class=".col-sm-6">
+				<p class="text-light">
+					7009381 <br> 7009569 <br> 7008980 <br>
+			</div>
+			<div class=".col-sm-6">
+				<p class="text-light">
+					Internet-Technologien<br> Sommersemester 2018<br>
+				</p>
+			</div>
+		</div>
+	</div>
+	<!-- 
+				Methode für die Ausgabe der Bücher-Datenbank 
+			 -->
 </body>
 </html>

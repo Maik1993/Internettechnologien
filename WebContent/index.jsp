@@ -75,7 +75,7 @@
 		<!-- Oberste Leiste -->
 		<ul class="navbar-nav mr-auto">
 			<form action="Warengruppe" methode="get">
-					<input type="submit" class="btn btn-link btn-lg text-white" name="buttonStart"
+					<input type="submit" class="btn btn-link  text-white" name="buttonStart"
 						value="Startseite" /><br>
 			</form>
 		</ul>
@@ -93,7 +93,7 @@
 			<li class="nav-item active "><a class="nav-link"
 				href="Bestellung/warenkorb.html">Warenkorb</a></li>
 			<li class="nav-item active "><a class="nav-link"
-				href="../Bookedit.jsp">Login</a></li>
+				href="Bookedit.jsp">Login</a></li>
 		</ul>
 	</nav>
 	<!--  Ende oberste Line mit Gruppennamen und Buchshop-Logo -->
@@ -191,6 +191,7 @@
 
 					String[] s = buecher.split("}");
 			%>
+	
 			<div class="row">
 				<div class="col-lg-12">
 					<table class="table">
@@ -209,7 +210,7 @@
 						</thead>
 						<tbody>
 							<%
-								for (int i = s.length - 1; i > 0; i--) {
+								for (int i = s.length - 1; i >= 0; i--) {
 										String[] sBuch = s[i].split(",");
 							%>
 							<tr>
