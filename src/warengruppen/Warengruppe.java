@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
+//import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -98,7 +98,7 @@ public class Warengruppe extends HttpServlet {
 					}				
 				}
 				if(request.getParameter("buttonStart") != null) {
-					button = null;
+					button = "start";
 				}
 				
 			}

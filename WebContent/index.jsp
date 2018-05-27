@@ -33,31 +33,46 @@
 
 <%
 	String button = (String) session.getAttribute("button");
+System.out.println(button);
 	String buecher = (String) session.getAttribute("Buecher");
-
 	KeyValueStore kvs = new KeyValueStore();
 	String key = "lBenYS9JqrKN2ld8dlkmICXiEVmYQPaIWDKid762";
 	String buecher_gson = "";
+	
 	ArrayList<datenbank.Buch> array_buecher = new ArrayList<datenbank.Buch>();
 	Gson json = new Gson();
 	TypeToken<List<datenbank.Buch>> list_type = new TypeToken<List<datenbank.Buch>>() {
 	};
 	Set<String> genres = new TreeSet<String>();
+	ArrayList<String> titles  = new ArrayList<>();
+	ArrayList<String> autor  = new ArrayList<>();
+	ArrayList<String>  preis = new ArrayList<>();
 	String fachbereich = "";
-
+	String titel = "";
+	String Autor = "";
+	String Preis = "";
+	ArrayList<String> Liste = new ArrayList<>();
 	try {
 		buecher_gson = kvs.get(key);
+		
 		array_buecher = json.fromJson(buecher_gson, list_type.getType());
-
 		for (int i = 0; i < array_buecher.size(); i++) {
+			
 			Buch b = array_buecher.get(i);
 			String genre = b.getFachbereich();
+			
 			genres.add(genre);
-
+			//String buffer = button.replaceAll(" ","");
+			if(button.equals(genre)){
+				String title = b.getTitel();	
+				titles.add(title);
+				String aut = b.getAutor();
+				autor.add(aut);
+				String p = b.getPreis();
+				preis.add(p);
+			}
 		}
-		
 	} catch (NullPointerException e) {
-
 	}
 %>
 <!-- 
@@ -105,20 +120,19 @@
 				<h2>Fachbereiche:</h2>
 				<%
 					Iterator<String> it_genres = genres.iterator();
-
 					while (it_genres.hasNext()) {
 						fachbereich = it_genres.next();
 				%>
 				<form action="Warengruppe" methode="get">
 					<input type="submit" class="btn btn-link btn-lg" name="<%=fachbereich%>"
-						value="<%="  " + fachbereich%>" /><br>
+						value="<%=fachbereich%>" /><br>
 				</form>
 				<%
 					}
 				%>
 			</div>
 			<%
-				if (button == null) {
+				if (button.equals("start")) {
 			%>
 
 
@@ -127,7 +141,8 @@
 				<div class="col-lg-8">
 					<div class="row">
 						<div class="col-lg-3"></div>
-						<div class="col-lg-6">Die Bücher sind zurzeit total beliebt.</div>
+						<div class="col-lg-6">Diese Bücher sind zurzeit total beliebt.</div>
+						<br><br>
 						<div class="col-lg-3"></div>
 					</div>
 
@@ -197,49 +212,71 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th>Fachbereich</th>
 								<th>Titel</th>
+								<td>
+						</td>
+						<td>
+						</td>
 								<th>Autor</th>
+							<td>
+						</td>
+						<td>
+						</td>
 								<th>Preis</th>
-								<th>ISBN</th>
-								<th>Jahr</th>
-								<th>Auflage</th>
-								<th>Inhalt</th>
+								
 
 							</tr>
 						</thead>
 						<tbody>
-							<%
-								for (int i = s.length - 1; i >= 0; i--) {
-										String[] sBuch = s[i].split(",");
-							%>
-							<tr>
-								<%
-									for (int j = 0; j < sBuch.length; j++) {
-												String output = (String) sBuch[j];
-												if (j == 3) {
-													output = output + " Euro";
-												}
-												// Dient zur besseren Darstellung
-												String tmp = output.replaceAll("[^a-zA-Z 0-9 .: ]", "");
-												String tmp2 = tmp.replaceAll("Fachbereich", "");
-												tmp = tmp2.replaceAll("Titel", "");
-												tmp2 = tmp.replaceAll("Autor", "");
-												tmp = tmp2.replaceAll("Preis", "");
-												tmp2 = tmp.replaceAll("ISBN", "");
-												tmp = tmp2.replaceAll("Jahr", "");
-												tmp2 = tmp.replaceAll("Auflage", "");
-												tmp = tmp2.replaceAll("Inhalt", "");
-												output = tmp.replace(":", "");
-								%>
-								<td><%=output%></td>
-								<%
-									}
-								%>
-							</tr>
-							<%
-								}
-							%>
+						<tr>
+						<td><%
+					Iterator<String> it_titles = titles.iterator();
+
+					while (it_titles.hasNext()) {
+						titel = it_titles.next();
+				%>
+					<form action="Warengruppe" methode="get">
+					<input type="submit" class="btn btn-link btn-lg" name="<%=titel%>"
+						value="<%=titel%>" /><br>
+				</form>				
+				
+				<%
+					}
+				%>
+						</td><td></td><td></td><td>
+						<%
+					Iterator<String> it_autore = autor.iterator();
+
+					while (it_autore.hasNext()) {
+						Autor = it_autore.next();
+				%>
+				
+					<form action="Warengruppe" methode="get">
+					<input type="submit" class="btn btn-link btn-lg" name="<%=Autor%>"
+						value="<%=Autor%>" /><br>
+				</form>
+				
+				<%
+					}
+				%>
+						</td><td></td><td></td><td>
+						<%
+					Iterator<String> it_preis = preis.iterator();
+
+					while (it_preis.hasNext()) {
+						Preis = it_preis.next();
+				%>
+				
+					
+						<form action="Warengruppe" methode="get">
+					<input type="submit" class="btn btn-link btn-lg" name="<%=Preis%>"
+						value="<%=Preis%>" /><br>
+				</form>
+				
+				<%
+					}
+				%>
+						</td></tr>
 						</tbody>
 					</table>
 				</div>
@@ -284,8 +321,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- 
-				Methode für die Ausgabe der Bücher-Datenbank 
-			 -->
+	
 </body>
 </html>

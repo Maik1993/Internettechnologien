@@ -107,15 +107,9 @@
 							<div class="row">
 								<div class="col-lg-3">
 									<div class="form-group">
-										<label for="exampleFormControlSelect1">Fachbereich</label> <select
-											class="form-control" name="Fachbereich">
-											<option><%=Fachbereich%>
-											<option>Krimi</option>
-											<option>Kinder</option>
-											<option>Fach</option>
-											<option>Roman</option>
-											<option>Thriller</option>
-										</select>
+										<label for="formGroupExampleInput">Fachbereich: </label> <br>
+										<input type="text" class="form-control" name="Fachbereich"
+											value=<%=Fachbereich%>>
 									</div>
 								</div>
 								<div class="col-lg-3">
@@ -223,7 +217,7 @@
 				<div class="col-lg-12">
 					<h3>Bücher-Datenbank</h3>
 					<%@ page import="de.imut.ec.keyvaluestore.KeyValueStore"%>
-					<%
+					 <%
 						KeyValueStore kvs = new KeyValueStore();
 						String sKVS = kvs.get(key);
 						String[] s = sKVS.split("}");
