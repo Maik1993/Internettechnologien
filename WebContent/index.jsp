@@ -32,13 +32,16 @@
 <%@ page import="java.util.Iterator"%>
 
 <%
-	String button = "start";
+	String button = "";
+	String buch_isbn = "";
 	button = (String) session.getAttribute("button");
-	System.out.println(button);
+	buch_isbn = (String) session.getAttribute("isbn");
+		System.out.println(button);
+		System.out.println(buch_isbn);
+		
 	if(button==null){
 		button="start";		
 	}
-	String buecher = (String) session.getAttribute("Buecher");
 	
 	KeyValueStore kvs = new KeyValueStore();
 	String key = "lBenYS9JqrKN2ld8dlkmICXiEVmYQPaIWDKid762";
@@ -52,10 +55,19 @@
 	ArrayList<String> titles  = new ArrayList<>();
 	ArrayList<String> autor  = new ArrayList<>();
 	ArrayList<String>  preis = new ArrayList<>();
+	ArrayList<String>  isbn = new ArrayList<>();
 	String fachbereich = "";
+	String iSBN  = "";
 	String titel = "";
 	String Autor = "";
 	String Preis = "";
+	String buch_Titel = "";
+	String buch_Autor = "";
+	String buch_Preis = "";
+	String buch_Auflage = "";
+	String buch_Inhalt = "";
+	String buch_ISBN = "";
+	String buch_Jahr = "";
 	ArrayList<String> Liste = new ArrayList<>();
 	try {
 		buecher_gson = kvs.get(key);
@@ -66,6 +78,7 @@
 			Buch b = array_buecher.get(i);
 			String genre = b.getFachbereich();
 			
+			
 			genres.add(genre);
 			//String buffer = button.replaceAll(" ","");
 			if(button.equals(genre)){
@@ -73,9 +86,21 @@
 				titles.add(title);
 				String aut = b.getAutor();
 				autor.add(aut);
+				String is = b.getISBN();
+				isbn.add(is);
 				String p = b.getPreis();
 				preis.add(p);
 			}
+			if(buch_isbn.equals(b.getISBN())){
+				buch_Titel = b.getTitel();
+				buch_Autor = b.getAutor();
+				buch_Preis = b.getPreis();
+				buch_Auflage = b.getAuflage();
+				buch_Inhalt = b.getInhalt();
+				buch_Jahr = b.getJahr();
+				buch_ISBN = b.getISBN();
+			}
+			
 		}
 	} catch (NullPointerException e) {
 	}
@@ -116,7 +141,9 @@
 				href="Bookedit.jsp">Login</a></li>
 		</ul>
 	</nav>
+	
 	<!--  Ende oberste Line mit Gruppennamen und Buchshop-Logo -->
+	
 	<div class="container-fluid">
 
 		<div class="row">
@@ -141,7 +168,7 @@
 			%>
 
 
-			<!-- muss noch weg -->
+			<!-- Startseite Buchkarussel -->
 			<div class="container">
 				<div class="col-lg-8">
 					<div class="row">
@@ -206,12 +233,42 @@
 				</div>
 				<div class="col-lg-2"></div>
 			</div>
+			
+			<!-- Buch Details  -->
+			
+			<%
+				}
+				if(button.equals("details")){
+					%>
+					
+			<div class="col bg-light">
+				<br> <br> <br>Das sind die Details zu <%=buch_Titel %> <br> <br>
+				
+				<!--  Serverabfrage "Beliebte Buecher" -->
+				<table class="table table-striped">
+
+					<tbody>
+						<tr>
+							<th scope="row"></th>
+							<td><h3><%=buch_Titel %></h3></td>
+							<td><h5><%=buch_Autor %></h5></td>
+							<td><h5><%=buch_Preis %> Euro</h5></td>
+							<td><button type="button" class="btn btn-secondary">In den Warenkorb</button></td>
+						</tr>
+						
+					</tbody>
+				</table>
+				<p><h5>ISBN: <%=buch_ISBN %></h5> </p>
+				<p><h5>Buchbeschreibung: <%=buch_Inhalt %></h5></p>
+				
+			</div>
+									
 			<%
 				} else {
-
-					String[] s = buecher.split("}");
+		
+					
 			%>
-	
+			<!-- Bücherausgabe nach Genre -->
 			<div class="row">
 				<div class="col-lg-12">
 					<table class="table">
@@ -234,30 +291,35 @@
 						</thead>
 						<tbody>
 						<tr>
-						<td><%
-					Iterator<String> it_titles = titles.iterator();
-
-					while (it_titles.hasNext()) {
-						titel = it_titles.next();
+						<td>
+						<%
+						Iterator<String> it_title = titles.iterator();
+						Iterator<String> it_isbn = isbn.iterator();
+							
+						while (it_title.hasNext()) {
+							titel = it_title.next();
+							iSBN = it_isbn.next();
+							
 				%>
+					
 					<form action="Warengruppe" methode="get">
-					<input type="submit" class="btn btn-link btn-lg" name="<%=titel%>"
+					<input type="submit" class="btn btn-link btn-lg text-dark" name="<%=iSBN%>"
 						value="<%=titel%>" /><br>
+						
 				</form>				
-				
+					
 				<%
 					}
 				%>
 						</td><td></td><td></td><td>
 						<%
 					Iterator<String> it_autore = autor.iterator();
-
+					
 					while (it_autore.hasNext()) {
 						Autor = it_autore.next();
 				%>
-				
 					<form action="Warengruppe" methode="get">
-					<input type="submit" class="btn btn-link btn-lg" name="<%=Autor%>"
+					<input type="submit" class="btn btn-link btn-lg text-dark" name="<%=Autor%>"
 						value="<%=Autor%>" /><br>
 				</form>
 				
@@ -272,9 +334,9 @@
 						Preis = it_preis.next();
 				%>
 				
-					
+				
 						<form action="Warengruppe" methode="get">
-					<input type="submit" class="btn btn-link btn-lg" name="<%=Preis%>"
+					<input type="submit" class="btn btn-link btn-lg text-dark" name="<%=Preis%>"
 						value="<%=Preis%>" /><br>
 				</form>
 				

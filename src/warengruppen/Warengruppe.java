@@ -57,18 +57,22 @@ public class Warengruppe extends HttpServlet {
 	
 	protected void warengruppeAusgabe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		KeyValueStore kvs = new KeyValueStore();
-		String key = "lBenYS9JqrKN2ld8dlkmICXiEVmYQPaIWDKid762";
+		
+		String ISBN = "";
+		String titel ="";
+		String isbn = "";
+		String button = "";
+		String fachbereich = "";
 		String buecher_gson = "";
+		String key = "lBenYS9JqrKN2ld8dlkmICXiEVmYQPaIWDKid762";
 		ArrayList<datenbank.Buch> array_buecher = new ArrayList<datenbank.Buch>();
+		ArrayList<String> isbns = new ArrayList();
 		Gson json = new Gson();
 		TypeToken<List<datenbank.Buch>> list_type = new TypeToken<List<datenbank.Buch>>() {};
-		
-		
 		Set<String> genres = new TreeSet<String>();
-		String fachbereich = "";
-		
 		HttpSession session = request.getSession(true);
-		String button = "";
+		
+		
 		try {
 			buecher_gson = kvs.get(key);
 			array_buecher = json.fromJson(buecher_gson, list_type.getType());
@@ -76,38 +80,42 @@ public class Warengruppe extends HttpServlet {
 			for (int i = 0; i < array_buecher.size(); i++) {
 				Buch a = array_buecher.get(i);
 				String genre = a.getFachbereich();
-				genres.add(genre);
+				String isbn_tmp = a.getISBN();
+				genres.add(genre);		
+				isbns.add(isbn_tmp);
 			}
 			
 
 			Iterator<String>  it_genres = genres.iterator();
-			String string_buecher = "";
 			while(it_genres.hasNext()) {
 				fachbereich = it_genres.next();
 				
 				if(request.getParameter(fachbereich) != null ) {
-					button = request.getParameter(fachbereich);
-					wechsel = false;
-					string_buecher = "";
+					button = request.getParameter(fachbereich);							
+				}	
+			}
+			if(request.getParameter("buttonStart") != null) {
+				button = "start";
+			}
+			Iterator<String>  it_isbn = isbns.iterator();
+			while(it_isbn.hasNext()) {
+				isbn = it_isbn.next();
+				if(request.getParameter(isbn) != null ) {
+					button = "details";
+					titel = request.getParameter(isbn);
 					
 					for (int i = 0; i < array_buecher.size(); i++) {
-						Buch b = array_buecher.get(i);
-						if (b.getFachbereich() == fachbereich) {
-							string_buecher += b.toString();
+						Buch a = array_buecher.get(i);
+						if(a.getTitel().equals(titel) && a.getISBN().equals(isbn) ) {
+							ISBN = a.getISBN();
 						}
-					}				
-				}
-				if(request.getParameter("buttonStart") != null) {
-					button = "start";
-				}
-				
+					}
+				}	
 			}
-			
-			String address = "index.jsp";
-			RequestDispatcher req = request.getRequestDispatcher(address);
-			
+			 
+			RequestDispatcher req = request.getRequestDispatcher("index.jsp");			
 			session.setAttribute("button" , button);
-			session.setAttribute("Buecher", string_buecher);
+			session.setAttribute("isbn" , ISBN);
 			req.forward(request, response);
 			} catch (NullPointerException e) {
 
