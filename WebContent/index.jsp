@@ -302,11 +302,10 @@
 							
 				%>
 					
-					<form action="Warengruppe" methode="get">
+					<p><form action="Warengruppe" methode="get">
 					<input type="submit" class="btn btn-link btn-lg text-dark" name="<%=iSBN%>"
 						value="<%=titel%>" /><br>
-						
-				</form>				
+						</form>	</h3>			
 					
 				<%
 					}
@@ -318,10 +317,7 @@
 					while (it_autore.hasNext()) {
 						Autor = it_autore.next();
 				%>
-					<form action="Warengruppe" methode="get">
-					<input type="submit" class="btn btn-link btn-lg text-dark" name="<%=Autor%>"
-						value="<%=Autor%>" /><br>
-				</form>
+					<br><p><%=Autor %><br>
 				
 				<%
 					}
@@ -335,10 +331,7 @@
 				%>
 				
 				
-						<form action="Warengruppe" methode="get">
-					<input type="submit" class="btn btn-link btn-lg text-dark" name="<%=Preis%>"
-						value="<%=Preis%>" /><br>
-				</form>
+				<br><p><%=Preis %><br>
 				
 				<%
 					}
