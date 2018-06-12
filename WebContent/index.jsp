@@ -39,7 +39,7 @@
 		System.out.println(button);
 		System.out.println(buch_isbn);
 		
-	if(button==null){
+	if(button == null){
 		button="start";		
 	}
 	
@@ -76,8 +76,7 @@
 		for (int i = 0; i < array_buecher.size(); i++) {
 			
 			Buch b = array_buecher.get(i);
-			String genre = b.getFachbereich();
-			
+			String genre = b.getFachbereich();	
 			
 			genres.add(genre);
 			//String buffer = button.replaceAll(" ","");
@@ -238,6 +237,7 @@
 			
 			<%
 				}
+			
 				if(button.equals("details")){
 					%>
 					
@@ -264,9 +264,7 @@
 			</div>
 									
 			<%
-				} else {
-		
-					
+				} if(genres.contains(button)){				
 			%>
 			<!-- Bücherausgabe nach Genre -->
 			<div class="row">
