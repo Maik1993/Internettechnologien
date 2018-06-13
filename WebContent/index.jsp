@@ -32,13 +32,12 @@
 <%@ page import="java.util.Iterator"%>
 
 <%
-	String button = "";
+	String button = null;
 	String buch_isbn = "";
 	button = (String) session.getAttribute("button");
 	buch_isbn = (String) session.getAttribute("isbn");
-		System.out.println(button);
-		System.out.println(buch_isbn);
-		
+	System.out.println(button);
+	
 	if(button==null){
 		button="start";		
 	}
@@ -77,10 +76,8 @@
 			
 			Buch b = array_buecher.get(i);
 			String genre = b.getFachbereich();
-			
-			
 			genres.add(genre);
-			//String buffer = button.replaceAll(" ","");
+		
 			if(button.equals(genre)){
 				String title = b.getTitel();	
 				titles.add(title);
@@ -155,7 +152,7 @@
 					while (it_genres.hasNext()) {
 						fachbereich = it_genres.next();
 				%>
-				<form action="Warengruppe" methode="get">
+				<form action="Warengruppe" methode="post">
 					<input type="submit" class="btn btn-link btn-lg" name="<%=fachbereich%>"
 						value="<%=fachbereich%>" /><br>
 				</form>
