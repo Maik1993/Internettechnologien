@@ -36,9 +36,16 @@
 	String buch_isbn = "";
 	button = (String) session.getAttribute("button");
 	buch_isbn = (String) session.getAttribute("isbn");
+
 	System.out.println(button);
 	
 	if(button==null){
+
+		System.out.println(button);
+		System.out.println(buch_isbn);
+		
+	if(button == null){
+
 		button="start";		
 	}
 	
@@ -75,7 +82,12 @@
 		for (int i = 0; i < array_buecher.size(); i++) {
 			
 			Buch b = array_buecher.get(i);
+
 			String genre = b.getFachbereich();
+
+			String genre = b.getFachbereich();	
+			
+
 			genres.add(genre);
 		
 			if(button.equals(genre)){
@@ -235,6 +247,7 @@
 			
 			<%
 				}
+			
 				if(button.equals("details")){
 					%>
 					
@@ -261,9 +274,7 @@
 			</div>
 									
 			<%
-				} else {
-		
-					
+				} if(genres.contains(button)){				
 			%>
 			<!-- Bücherausgabe nach Genre -->
 			<div class="row">

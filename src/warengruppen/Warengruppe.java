@@ -57,7 +57,7 @@ public class Warengruppe extends HttpServlet {
 	
 	protected void warengruppeAusgabe(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		KeyValueStore kvs = new KeyValueStore();
-		
+		boolean start = false;
 		String ISBN = "";
 		String titel ="";
 		String isbn = "";
@@ -91,8 +91,8 @@ public class Warengruppe extends HttpServlet {
 				fachbereich = it_genres.next();
 				
 				if(request.getParameter(fachbereich) != null ) {
-					button = request.getParameter(fachbereich);							
-				}	
+					button = request.getParameter(fachbereich);	
+				}
 			}
 			if(request.getParameter("buttonStart") != null) {
 				button = "start";
