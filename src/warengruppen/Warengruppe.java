@@ -84,7 +84,10 @@ public class Warengruppe extends HttpServlet {
 				genres.add(genre);		
 				isbns.add(isbn_tmp);
 			}
-			
+			if(start == false){
+				button ="start";
+				start = true;
+			}
 
 			Iterator<String>  it_genres = genres.iterator();
 			while(it_genres.hasNext()) {
