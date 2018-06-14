@@ -19,7 +19,7 @@ public class WarengruppeHandler extends Handler implements Serializable {
 	 */
 	private static final long serialVersionUID = -5028227231140477013L;
 	private List<String> fachbereiche = new ArrayList<String>();
-	private List<Buch> fachbereich_buecher;
+	private List<Buch> fachbereich_buecher = new ArrayList<Buch>();;
 	private String fachbereich;
 	
 	
@@ -41,7 +41,11 @@ public class WarengruppeHandler extends Handler implements Serializable {
 	
 	private void createFbBuecher() {
 		
-		this.fachbereich_buecher = new ArrayList<Buch>();
+		if(this.buecher == null) {
+			init();
+		}
+		
+		this.fachbereich_buecher.clear();
 		
 		for(Buch b : this.buecher) {
 			if(b.getFachbereich().equals(this.fachbereich)) {
