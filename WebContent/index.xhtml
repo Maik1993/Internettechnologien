@@ -5,60 +5,16 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
+<h:head>
+	
+</h:head>
 
-<head>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<link rel="stylesheet" href="Grobspezifikation/css/bootstrap.min.css"
-	type="text/css" media="all" />
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
 
-<style>
-.navbar-brand {
-	padding-left:0px;	
-}
-</style>
-
-</head>
-
-<body>
-
-
-
-	<div class="navbar navbar-default navbar-fixed-top bg-dark">
-
-		<div class="container">
-
-		<div class="nav-item">
-			<a class="navbar-brand" href="#">D2</a>
-		</div>
-			
-			<div class="nav-item">
-			<h:form >
-				<h:commandLink action="index.xhtml">Startseite</h:commandLink>
-			</h:form>
-			</div>
-
+	<h:body>
 			
 
+	</h:body>
 
-
-		
-		</div>
-
-	</div>
-	<ul>
-		<ui:repeat var="b" value="#{wgHandler.fachbereiche}">
-			<li>
-			<h:form>
-				<h:commandLink value="#{b}" action="warengruppen.xhtml">
-					<f:setPropertyActionListener target="#{wgHandler.fachbereich}" value="#{b}" />
-				</h:commandLink>
-			</h:form>
-				
-			</li>
-		</ui:repeat>
-	</ul>
-
-</body>
-
+</ui:composition>
 </html>
