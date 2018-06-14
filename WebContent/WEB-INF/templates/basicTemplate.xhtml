@@ -33,7 +33,7 @@
 					<ul>
 						<ui:repeat var="b" value="#{wgHandler.fachbereiche}">
 							<li><h:form>
-									<h:commandLink value="#{b}" action="warengruppen.jsf">
+									<h:commandLink value="#{b}" action="warengruppen.xhtml">
 										<f:setPropertyActionListener target="#{wgHandler.fachbereich}"
 											value="#{b}" />
 									</h:commandLink>

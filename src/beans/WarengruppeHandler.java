@@ -24,7 +24,7 @@ public class WarengruppeHandler extends Handler implements Serializable {
 	
 	
 	public WarengruppeHandler() {
-		
+		init();
 		for(Buch b: this.buecher) {
 			if(!fachbereiche.contains(b.getFachbereich())) {
 				fachbereiche.add(b.getFachbereich());

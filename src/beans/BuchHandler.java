@@ -20,10 +20,15 @@ public class BuchHandler extends Handler implements Serializable {
 	private String buch_titel;
 
 	public BuchHandler() {
-
+		
 	}
 
 	public void setBuch_titel(String titel) {
+		
+		if(this.buecher == null) {
+			init();
+		}
+		
 		this.buch_titel = titel;
 		setBuch();
 	}

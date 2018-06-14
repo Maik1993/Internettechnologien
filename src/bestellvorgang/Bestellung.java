@@ -1,9 +1,7 @@
 package bestellvorgang;
 
 import java.io.Serializable;
-import java.util.Map;
-
-import datenbank.Buch;
+import java.util.HashMap;
 
 
 public class Bestellung implements Serializable {
@@ -12,13 +10,13 @@ public class Bestellung implements Serializable {
 	
 	private Kunde kunde;
 	
-	private Map<String, Integer> bestellung;
+	private HashMap<String, Integer> bestellung;
 	
-	public Map<String, Integer> getBestellung() {
+	public HashMap<String, Integer> getBestellung() {
 		return bestellung;
 	}
 
-	public void setBestellung(Map<String, Integer> bestellung) {
+	public void setBestellung(HashMap<String, Integer> bestellung) {
 		this.bestellung = bestellung;
 	}
 

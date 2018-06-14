@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:f="http://java.sun.com/jsf/core">
+	
 
 <h:head>
 <link rel="stylesheet" href="Grobspezifikation/css/bootstrap.min.css"
@@ -55,16 +55,15 @@
 						<f:facet name="header">Inhalt</f:facet>
 				#{buch.inhalt}
 			</h:column>
+			<h:column>
+				<h:commandButton action="#{bestellungHandler.hinzufuegen}" >
+					<f:param name="titel" value="#{buch.titel}" />
+				</h:commandButton>
+			</h:column>
 				</h:dataTable>
 			</h:form>
-Hier zwischen sollte 
-			<h:form>
-				<b:panelGrid columns="1" size="sm">
-					<b:commandButton value="primary" ajax="true" update="@none"
-						look="primary" style="width:80px" />
-				</b:panelGrid>
-			</h:form>
-			ein Button auftauchen.
+
+			
 		</ui:define>
 	</body>
 </ui:composition>
