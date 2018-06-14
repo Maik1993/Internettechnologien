@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+<head>
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link rel="stylesheet" href="Grobspezifikation/css/bootstrap.min.css"
+	type="text/css" media="all" />
+
+<style>
+.table, th, td {
+	border: 1px solid black;
+}
+.theader{
+	text-align:center;
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+	
+	<br />
+	<table>
+		<tr>
+			<th class="theader" colspan="8">Warengruppe: #{wgHandler.fachbereich}</th>
+		</tr>
+		<tr>
+			<th>Fachbereich</th>
+			<th>Titel</th>
+			<th>Autor</th>
+			<th>Preis</th>
+			<th>ISBN</th>
+			<th>Jahr</th>
+			<th>Auflage</th>
+			<th>Inhalt</th>
+		</tr>
+
+		<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}">
+			<tr>
+				<h:form>
+					<td>#{b.fachbereich}</td>
+					<td><h:commandLink value="#{b.titel}"
+							action="details.xhtml">
+							<f:setPropertyActionListener target="#{bHandler.buch_titel}" value="#{b.titel}" />
+						</h:commandLink></td>
+					<td>#{b.autor}</td>
+					<td>#{b.preis}</td>
+					<td>#{b.ISBN}</td>
+					<td>#{b.jahr}</td>
+					<td>#{b.auflage}</td>
+					<td>#{b.inhalt}</td>
+				</h:form>
+			</tr>
+		</ui:repeat>
+	</table>
+
+</body>
+
+
+</html>

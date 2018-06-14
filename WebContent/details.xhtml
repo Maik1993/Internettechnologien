@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<head>
+
+<style >
+.table{
+	border: 1px solid black;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+
+
+	<h:form>
+	
+		<h:dataTable styleClass="table" value="#{bHandler.buch}" var="buch" rowClasses="odd,even">
+			<h:column>
+				<f:facet name="header">Fachbereich</f:facet>
+				#{buch.fachbereich}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Titel</f:facet>
+				#{buch.titel}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Autor</f:facet>
+				#{buch.autor}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Preis</f:facet>
+				#{buch.preis}
+			</h:column>
+			<h:column>
+				<f:facet name="header">ISBN</f:facet>
+				#{buch.ISBN}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Jahr</f:facet>
+				#{buch.jahr}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Auflage</f:facet>
+				#{buch.auflage}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Inhalt</f:facet>
+				#{buch.inhalt}
+			</h:column>
+		</h:dataTable>
+	
+	</h:form>
+
+</body>
+
+</html>
+
