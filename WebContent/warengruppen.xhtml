@@ -8,7 +8,7 @@
 
 
 
-<head>
+<h:head>
 
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -16,28 +16,25 @@
 	type="text/css" media="all" />
 
 <style>
-.table, th, td {
-	border: 1px solid black;
-}
-.theader{
-	text-align:center;
-}
+	#warengruppe{
+		border: 1px black solid;
+	}
 </style>
 
-</head>
+</h:head>
 
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
 
 <body>
 
-
 	
-	<br />
-	<table>
+	<ui:define name="content" id="warengruppe">
+	
+	<table style="border: 1px black solid; text-align: center" >
 		<tr>
-			<th class="theader" colspan="8">Warengruppe: #{wgHandler.fachbereich}</th>
+			<th class="theader" colspan="7">Warengruppe: #{wgHandler.fachbereich}</th>
 		</tr>
 		<tr>
-			<th>Fachbereich</th>
 			<th>Titel</th>
 			<th>Autor</th>
 			<th>Preis</th>
@@ -49,8 +46,7 @@
 
 		<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}">
 			<tr>
-				<h:form>
-					<td>#{b.fachbereich}</td>
+				<h:form style="text-align:center">
 					<td><h:commandLink value="#{b.titel}"
 							action="details.xhtml">
 							<f:setPropertyActionListener target="#{bHandler.buch_titel}" value="#{b.titel}" />
@@ -65,8 +61,8 @@
 			</tr>
 		</ui:repeat>
 	</table>
-
+	</ui:define>
 </body>
-
+</ui:composition>	
 
 </html>
