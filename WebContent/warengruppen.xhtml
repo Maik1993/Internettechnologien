@@ -29,23 +29,23 @@
 
 		<ui:define name="content" id="warengruppe">
 
-			<table style="border: 1px black solid; text-align: center">
+			<table style="border: 1px; text-align: center">
 				<tr>
-					<th class="theader" colspan="7">Warengruppe:#{wgHandler.fachbereich}</th>
+					<th class="theader" colspan="7"><h3>Warengruppe:#{wgHandler.fachbereich}</h3></th>
 				</tr>
 				<tr>
-					<th>Titel</th>
-					<th>Autor</th>
-					<th>Preis</th>
-					<th>ISBN</th>
-					<th>Jahr</th>
-					<th>Auflage</th>
-					<th>Inhalt</th>
+					<th><h4>Titel</h4></th>
+					<th><h4> Autor </h4></th>
+					<th><h4>Preis</h4></th>
+					<th><h4>ISBN</h4></th>
+					<th><h4>Jahr</h4></th>
+					<th><h4>Auflage</h4></th>
+					<th><h4>Inhalt</h4></th>
 				</tr>
 
 				<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}">
 					<tr>
-						<h:form style="text-align:center">
+						<h:form style="text-align:left; front-size:big">
 							<td><h:commandLink value="#{b.titel}" action="details.xhtml">
 									<f:setPropertyActionListener target="#{bHandler.buch_titel}"
 										value="#{b.titel}" />
