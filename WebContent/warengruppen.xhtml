@@ -4,65 +4,68 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
-
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
 
 
 <h:head>
 
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<link rel="stylesheet" href="Grobspezifikation/css/bootstrap.min.css"
-	type="text/css" media="all" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="stylesheet" href="Grobspezifikation/css/bootstrap.min.css"
+		type="text/css" media="all" />
 
-<style>
-	#warengruppe{
-		border: 1px black solid;
-	}
+	<style>
+#warengruppe {
+	border: 1px black solid;
+}
 </style>
 
 </h:head>
 
 <ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
 
-<body>
+	<body>
 
-	
-	<ui:define name="content" id="warengruppe">
-	
-	<table style="border: 1px black solid; text-align: center" >
-		<tr>
-			<th class="theader" colspan="7">Warengruppe: #{wgHandler.fachbereich}</th>
-		</tr>
-		<tr>
-			<th>Titel</th>
-			<th>Autor</th>
-			<th>Preis</th>
-			<th>ISBN</th>
-			<th>Jahr</th>
-			<th>Auflage</th>
-			<th>Inhalt</th>
-		</tr>
 
-		<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}">
-			<tr>
-				<h:form style="text-align:center">
-					<td><h:commandLink value="#{b.titel}"
-							action="details.xhtml">
-							<f:setPropertyActionListener target="#{bHandler.buch_titel}" value="#{b.titel}" />
-						</h:commandLink></td>
-					<td>#{b.autor}</td>
-					<td>#{b.preis}</td>
-					<td>#{b.ISBN}</td>
-					<td>#{b.jahr}</td>
-					<td>#{b.auflage}</td>
-					<td>#{b.inhalt}</td>
-				</h:form>
-			</tr>
-		</ui:repeat>
-	</table>
-	</ui:define>
-</body>
-</ui:composition>	
+		<ui:define name="content" id="warengruppe">
+
+			<table style="border: 1px black solid; text-align: center">
+				<tr>
+					<th class="theader" colspan="7">Warengruppe:#{wgHandler.fachbereich}</th>
+				</tr>
+				<tr>
+					<th>Titel</th>
+					<th>Autor</th>
+					<th>Preis</th>
+					<th>ISBN</th>
+					<th>Jahr</th>
+					<th>Auflage</th>
+					<th>Inhalt</th>
+				</tr>
+
+				<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}">
+					<tr>
+						<h:form style="text-align:center">
+							<td><h:commandLink value="#{b.titel}" action="details.xhtml">
+									<f:setPropertyActionListener target="#{bHandler.buch_titel}"
+										value="#{b.titel}" />
+								</h:commandLink></td>
+							<td>#{b.autor}</td>
+							<td>#{b.preis}</td>
+							<td>#{b.ISBN}</td>
+							<td>#{b.jahr}</td>
+							<td>#{b.auflage}</td>
+							<td>#{b.inhalt}</td>
+						</h:form>
+					</tr>
+				</ui:repeat>
+			</table>
+			<b:row>
+				
+			</b:row>
+		</ui:define>
+	</body>
+</ui:composition>
 
 </html>

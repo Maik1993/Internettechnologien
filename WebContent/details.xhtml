@@ -1,13 +1,14 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
-
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
 
 <h:head>
-
+<link rel="stylesheet" href="Grobspezifikation/css/bootstrap.min.css"
+		type="text/css" media="all"/>
 	<style>
 .table {
 	border: 1px solid black;
@@ -18,10 +19,8 @@
 <ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
 	<body>
 
-
 		<ui:define name="content">
 			<h:form>
-
 				<h:dataTable styleClass="table" value="#{bHandler.buch}" var="buch"
 					rowClasses="odd,even" style="border: 1px solid black">
 					<h:column>
@@ -57,8 +56,15 @@
 				#{buch.inhalt}
 			</h:column>
 				</h:dataTable>
-
 			</h:form>
+Hier zwischen sollte 
+			<h:form>
+				<b:panelGrid columns="1" size="sm">
+					<b:commandButton value="primary" ajax="true" update="@none"
+						look="primary" style="width:80px" />
+				</b:panelGrid>
+			</h:form>
+			ein Button auftauchen
 		</ui:define>
 	</body>
 </ui:composition>

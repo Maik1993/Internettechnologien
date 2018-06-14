@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	>
+<h:head>
+	<link rel="stylesheet" href="Grobspezifikation/css/bootstrap.min.css"
+		type="text/css" media="all" />
+</h:head>
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+
+	<ui:define name="content" id="warenkorb">
+	Blablablablablablabla
+	<table style="border: 1px black solid; text-align: center" >
+		<tr>
+			<th class="theader" colspan="7">Warenkorb: #{wgHandler.fachbereich}</th>
+		</tr>
+		<tr>
+			<th>Titel</th>
+			<th>ISBN</th>
+			<th>Preis</th>
+		</tr>
+
+		<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}">
+			<tr>
+				<h:form style="text-align:center">
+					<td><h:commandLink value="#{b.titel}"
+							action="details.xhtml">
+							<f:setPropertyActionListener target="#{bHandler.buch_titel}" value="#{b.titel}" />
+						</h:commandLink></td>
+					<td>#{b.autor}</td>
+					<td>#{b.preis}</td>
+					<td>#{b.ISBN}</td>
+					
+				</h:form>
+			</tr>
+		</ui:repeat>
+	</table>
+	</ui:define>
+
+</ui:composition>
+</html>
