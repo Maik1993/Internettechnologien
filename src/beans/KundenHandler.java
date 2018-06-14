@@ -12,7 +12,6 @@ import bestellvorgang.Kunde;
 @ManagedBean(name="kHandler")
 @SessionScoped
 public class KundenHandler extends Handler{
-
 	private Kunde kunde;
 	
 	public KundenHandler() {

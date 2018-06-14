@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="Grobspezifikation/css/bootstrap.min.css">
 <script src="Grobspezifikation/js/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
 <style>
 #Form-Ele {
 	padding-right: 25px;

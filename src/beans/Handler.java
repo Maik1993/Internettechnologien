@@ -14,7 +14,6 @@ abstract class Handler {
 	
 	protected String key_buecher = "lBenYS9JqrKN2ld8dlkmICXiEVmYQPaIWDKid762";
 	protected String key_kunde = "8mVgu735LzJqtNG9FQMuDKASu0VowPoX5c6SfjQk";
-	
 	protected KeyValueStore kvs = new KeyValueStore();
 	
 	protected Gson json = new Gson();

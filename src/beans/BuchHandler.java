@@ -14,7 +14,6 @@ import datenbank.Buch;
 @SessionScoped
 
 public class BuchHandler extends Handler implements Serializable {
-
 	private static final long serialVersionUID = -3728967773495326294L;
 
 	private DataModel<Buch> buch;

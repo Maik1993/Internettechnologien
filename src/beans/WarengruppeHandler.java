@@ -14,7 +14,6 @@ import datenbank.Buch;
 @SessionScoped
 
 public class WarengruppeHandler extends Handler implements Serializable {
-	
 	/**
 	 * 
 	 */
