@@ -42,8 +42,9 @@
 					<th><h4>Auflage</h4></th>
 					<th><h4>Inhalt</h4></th>
 				</tr>
-
-				<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}">
+	
+				<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}" >
+					<h:panelGroup>
 					<tr>
 						<h:form style="text-align:left; front-size:big">
 							<td><h:commandLink value="#{b.titel}" action="details.xhtml">
@@ -58,6 +59,7 @@
 							<td>#{b.inhalt}</td>
 						</h:form>
 					</tr>
+					</h:panelGroup>
 				</ui:repeat>
 			</table>
 			<b:row>

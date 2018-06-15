@@ -15,6 +15,13 @@
 		name="bootstrap/3.3.6/css/bootstrap-theme.min-jsf.css" />
 	<h:outputStylesheet library="webjars"
 		name="font-awesome/4.5.0/css/font-awesome.min-jsf.css" />
+		<style>.link{
+			front-weight: bolder;
+			
+			front-size: 100pt;
+}
+</style>
+
 </h:head>
 
 <h:body>
@@ -31,15 +38,16 @@
 			<div id="warengruppen">
 				<ui:insert name="warengruppen">
 					<h3>Fachbereiche:</h3>
-					<ul>
+					<!--  --><ul>
 						<ui:repeat var="b" value="#{wgHandler.fachbereiche}">
 							<li><h:form>
-									<h:commandLink value="#{b}" action="warengruppen.xhtml">
+									<h4><h:commandLink value="#{b}" action="warengruppen.xhtml" styleClass="link" >
 										<f:setPropertyActionListener target="#{wgHandler.fachbereich}"
 											value="#{b}" />
-									</h:commandLink>
+									</h:commandLink></h4>
 								</h:form></li>
 						</ui:repeat>
+						
 					</ul>
 				</ui:insert>
 			</div>
