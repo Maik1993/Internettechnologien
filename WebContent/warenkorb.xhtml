@@ -14,7 +14,7 @@
 
 	<ui:define name="content" id="warenkorb">
 	
-	<table style="border: ; text-align: center" >
+	<table style="border: ; text-align: left; width: 700px; " >
 		<tr>
 			<th class="theader" colspan="4"><h3>Warenkorb: #{wgHandler.fachbereich}</h3></th>
 		</tr>
@@ -27,7 +27,7 @@
 
 		<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}">
 			<tr>
-				<h:form style="text-align:center">
+				<h:form style="text-align:left">
 					<td><h5><h:commandLink value="#{b.titel}"
 							action="details.xhtml">
 							<f:setPropertyActionListener target="#{bHandler.buch_titel}" value="#{b.titel}" />
