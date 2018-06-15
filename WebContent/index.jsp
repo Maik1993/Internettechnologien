@@ -163,7 +163,7 @@
 				%>
 			</div>
 			<%
-				if (button.equals("start")) {
+				if (button.equals("start") || button.equals("") || button == null) {
 			%>
 
 

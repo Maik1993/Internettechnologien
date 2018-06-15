@@ -16,25 +16,25 @@
 	
 	<table style="border: ; text-align: left; width: 700px; " >
 		<tr>
-			<th class="theader" colspan="4"><h3>Warenkorb: #{wgHandler.fachbereich}</h3></th>
+			<th class="theader" colspan="4"><h2>Warenkorb: #{wgHandler.fachbereich}</h2></th>
 		</tr>
 		<tr>
-					<th><h4>Titel</h4></th>
-					<th><h4>Autor </h4></th>
-					<th><h4>Preis</h4></th>
-					<th><h4>ISBN</h4></th>
+					<th><h3>Titel</h3></th>
+					<th><h3>Autor </h3></th>
+					<th><h3>Preis</h3></th>
+					<th><h3>ISBN</h3></th>
 		</tr>
 
 		<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}">
 			<tr>
 				<h:form style="text-align:left">
-					<td><h5><h:commandLink value="#{b.titel}"
+					<td><h4><h:commandLink value="#{b.titel}"
 							action="details.xhtml">
 							<f:setPropertyActionListener target="#{bHandler.buch_titel}" value="#{b.titel}" />
-						</h:commandLink></h5></td>
-					<td><h5>#{b.autor}</h5></td>
-				    <td><h5>#{b.preis}</h5></td>
-					<td><h5>#{b.ISBN}</h5></td>
+						</h:commandLink></h4></td>
+					<td><h4>#{b.autor}</h4></td>
+				    <td><h4>#{b.preis}</h4></td>
+					<td><h4>#{b.ISBN}</h4></td>
 				</h:form>
 			</tr>
 		</ui:repeat>
