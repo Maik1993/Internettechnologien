@@ -18,6 +18,8 @@
 #warengruppe {
 	border: 1px black solid;
 }
+.col0{width: 1000px;}
+
 </style>
 
 </h:head>
@@ -29,15 +31,15 @@
 
 		<ui:define name="content" id="warengruppe">
 
-			<table style="border: 1px; text-align: center">
+			<table style="border: 1px; text-align: center;">
 				<tr>
-					<th class="theader" colspan="4"><h3>Warengruppe:#{wgHandler.fachbereich}</h3></th>
+					<th class="theader" colspan="4"><h2>Warengruppe: #{wgHandler.fachbereich}</h2></th>
 				</tr>
 				<tr>
-					<th><h4>Titel</h4></th>
-					<th><h4> Autor </h4></th>
-					<th><h4>Preis</h4></th>
-					<th><h4>ISBN</h4></th>
+					<th><h3>Titel</h3></th>
+					<th><h3> Autor </h3></th>
+					<th><h3>Preis</h3></th>
+					<th><h3>ISBN</h3></th>
 				
 				</tr>
 	
@@ -45,13 +47,13 @@
 					
 					<tr>
 						<h:form style="text-align:left;">
-							<td><h5><h:commandLink value="#{b.titel}" action="details.xhtml">
+							<td ><h4><h:commandLink value="#{b.titel}" action="details.xhtml">
 									<f:setPropertyActionListener target="#{bHandler.buch_titel}"
 										value="#{b.titel}" />
-								</h:commandLink></h5></td>
-							<td><h5>#{b.autor}</h5></td>
-							<td><h5>#{b.preis}</h5></td>
-							<td><h5>#{b.ISBN}</h5></td>
+								</h:commandLink></h4></td>
+							<td ><h4>#{b.autor}</h4></td>
+							<td ><h4>#{b.preis}</h4></td>
+							<td ><h4>#{b.ISBN}</h4></td>
 							
 						</h:form>
 					</tr>

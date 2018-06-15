@@ -48,7 +48,7 @@
 	<a class="navbar-brand" href="#">D2</a> <!-- Oberste Leiste -->
 	<ul class="navbar-nav mr-auto">
 		<li class="nav-item active"><a class="nav-link"
-			href="index.jsp">Startseite</a></li>
+			href="index.html">Startseite</a></li>
 	</ul>
 
 
@@ -61,7 +61,7 @@
 
 	<ul class="navbar-nav  ">
 		<li class="nav-item active "><a class="nav-link"
-			href="Grobspezifikation/Bestellungen/warenkorb.html">Warenkorb</a></li>
+			href="warenkorb.html">Warenkorb</a></li>
 		<li class="nav-item active "><a class="nav-link"
 			href="Bookedit.jsp">Login</a></li>
 	</ul>
