@@ -13,27 +13,28 @@
 <ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
 
 	<ui:define name="content" id="warenkorb">
-	Blablablablablablabla
-	<table style="border: 1px black solid; text-align: center" >
+	
+	<table style="border: ; text-align: center" >
 		<tr>
-			<th class="theader" colspan="7">Warenkorb: #{wgHandler.fachbereich}</th>
+			<th class="theader" colspan="7"><h3>Warenkorb: #{wgHandler.fachbereich}</h3></th>
 		</tr>
 		<tr>
-			<th>Titel</th>
-			<th>ISBN</th>
-			<th>Preis</th>
+					<th><h4>Titel</h4></th>
+					<th><h4> Autor </h4></th>
+					<th><h4>Preis</h4></th>
+					<th><h4>ISBN</h4></th>
 		</tr>
 
 		<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}">
 			<tr>
 				<h:form style="text-align:center">
-					<td><h:commandLink value="#{b.titel}"
+					<td><h5><h:commandLink value="#{b.titel}"
 							action="details.xhtml">
 							<f:setPropertyActionListener target="#{bHandler.buch_titel}" value="#{b.titel}" />
-						</h:commandLink></td>
-					<td>#{b.autor}</td>
-					<td>#{b.preis}</td>
-					<td>#{b.ISBN}</td>
+						</h:commandLink></h5></td>
+					<td><h5>#{b.autor}</h5></td>
+				    <td><h5>#{b.preis}</h5></td>
+					<td><h5>#{b.ISBN}</h5></td>
 				</h:form>
 			</tr>
 		</ui:repeat>
