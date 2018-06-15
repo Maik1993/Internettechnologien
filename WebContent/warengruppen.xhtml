@@ -31,32 +31,28 @@
 
 			<table style="border: 1px; text-align: center">
 				<tr>
-					<th class="theader" colspan="7"><h3>Warengruppe:#{wgHandler.fachbereich}</h3></th>
+					<th class="theader" colspan="4"><h3>Warengruppe:#{wgHandler.fachbereich}</h3></th>
 				</tr>
 				<tr>
 					<th><h4>Titel</h4></th>
 					<th><h4> Autor </h4></th>
 					<th><h4>Preis</h4></th>
 					<th><h4>ISBN</h4></th>
-					<th><h4>Jahr</h4></th>
-					<th><h4>Auflage</h4></th>
-					<th><h4>Inhalt</h4></th>
+				
 				</tr>
 	
 				<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}" >
 					<h:panelGroup>
 					<tr>
-						<h:form style="text-align:left; front-size:big">
-							<td><h:commandLink value="#{b.titel}" action="details.xhtml">
+						<h:form style="text-align:left;">
+							<td><h5><h:commandLink value="#{b.titel}" action="details.xhtml">
 									<f:setPropertyActionListener target="#{bHandler.buch_titel}"
 										value="#{b.titel}" />
-								</h:commandLink></td>
-							<td>#{b.autor}</td>
-							<td>#{b.preis}</td>
-							<td>#{b.ISBN}</td>
-							<td>#{b.jahr}</td>
-							<td>#{b.auflage}</td>
-							<td>#{b.inhalt}</td>
+								</h:commandLink></h5></td>
+							<td><h5>#{b.autor}</h5></td>
+							<td><h5>#{b.preis}</h5></td>
+							<td><h5>#{b.ISBN}</h5></td>
+							
 						</h:form>
 					</tr>
 					</h:panelGroup>

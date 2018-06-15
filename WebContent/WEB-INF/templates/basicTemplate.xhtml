@@ -37,14 +37,14 @@
 		<div class="col-lg-3">
 			<div id="warengruppen">
 				<ui:insert name="warengruppen">
-					<h3>Fachbereiche:</h3>
+					<h2>Fachbereiche:</h2>
 					<!--  --><ul>
 						<ui:repeat var="b" value="#{wgHandler.fachbereiche}">
 							<li><h:form>
-									<h4><h:commandLink value="#{b}" action="warengruppen.xhtml" styleClass="link" >
+									<h3><h:commandLink value="#{b}" action="warengruppen.xhtml" styleClass="link" >
 										<f:setPropertyActionListener target="#{wgHandler.fachbereich}"
 											value="#{b}" />
-									</h:commandLink></h4>
+									</h:commandLink></h3>
 								</h:form></li>
 						</ui:repeat>
 						
