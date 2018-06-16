@@ -1,5 +1,30 @@
+<!DOCTYPE html>
 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta content="text/html" charset="UTF-8" http-equiv="Content-Type" />
 
+<link rel="stylesheet" href="Grobspezifikation/css/bootstrap.min.css"
+		type="text/css" media="all" />
+	<h:outputStylesheet library="webjars"
+		name="bootstrap/3.3.6/css/bootstrap.min-jsf.css" />
+	<h:outputStylesheet library="webjars"
+		name="bootstrap/3.3.6/css/bootstrap-theme.min-jsf.css" />
+	<h:outputStylesheet library="webjars"
+		name="font-awesome/4.5.0/css/font-awesome.min-jsf.css" />
+		<style>.link{
+			front-weight: bolder;
+			
+			front-size: 100pt;
+}
+</style>
+
+</h:head>
+<ui:composition>
 <!--  Oberste Line mit Gruppennamen  -->
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
@@ -13,7 +38,7 @@
 			</div>
 
 			<ul class="nav navbar-nav navbar-left">
-				<li class="nav-item "><a class="nav-link" href="index.html">Startseite</a></li>
+				<li class="nav-item "><a class="nav-link" href="index.xhtml">Startseite</a></li>
 
 				<li>
 					<!--  Serveranfrage Suche -->
@@ -27,8 +52,7 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li class="nav-item "><a class="nav-link"
-					href="warenkorb.html">Warenkorb</a></li>
+				<li class="nav-item "><h:form><h:commandLink value="Warenkorb" action="#{bestellungHandler.setAktuelleBestellung()}" styleClass="link" /></h:form></li>
 				<li class="nav-item "><a class="nav-link" href="Bookedit.jsp">Login</a></li>
 			</ul>
 
@@ -40,5 +64,5 @@
 		</div>
 	</nav>
 	<!--  Ende oberste Line mit Gruppennamen und Buchshop-Logo -->
-
-
+</ui:composition>
+</html>

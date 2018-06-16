@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	>
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<link rel="stylesheet" href="Grobspezifikation/css/bootstrap.min.css"
 		type="text/css" media="all" />
@@ -12,34 +11,50 @@
 
 <ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
 
-	<ui:define name="content" id="warenkorb">
-	
-	<table style="border: ; text-align: left; width: 700px; " >
-		<tr>
-			<th class="theader" colspan="4"><h2>Warenkorb: #{wgHandler.fachbereich}</h2></th>
-		</tr>
-		<tr>
-					<th><h3>Titel</h3></th>
-					<th><h3>Autor </h3></th>
-					<th><h3>Preis</h3></th>
-					<th><h3>ISBN</h3></th>
-		</tr>
+	<body>
 
-		<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}">
-			<tr>
-				<h:form style="text-align:left">
-					<td><h4><h:commandLink value="#{b.titel}"
-							action="details.xhtml">
-							<f:setPropertyActionListener target="#{bHandler.buch_titel}" value="#{b.titel}" />
-						</h:commandLink></h4></td>
-					<td><h4>#{b.autor}</h4></td>
-				    <td><h4>#{b.preis}</h4></td>
-					<td><h4>#{b.ISBN}</h4></td>
-				</h:form>
-			</tr>
-		</ui:repeat>
-	</table>
-	</ui:define>
+		<ui:define name="content">
+
+
+
+
+
+			<table style="text-align:center;border:1px solid black">
+				<tr>
+					<th>Titel</th>
+					<th>Preis</th>
+					<th>ISBN</th>
+					<th>Anzahl</th>
+				</tr>
+				<ui:repeat var="t" value="#{bestellungHandler.titel}">
+
+
+					<tr >
+						<td><h:outputText value="#{t}" id="titel" />
+							#{bHandler.setBuch_titel(t)}
+						</td>
+						
+
+						<td><h:outputText value="#{bHandler.preis}" id="preis" /></td>
+						<td><h:outputText value="#{bHandler.isbn}" id="isbn" /></td>
+						<td><h:outputText
+								value="#{bestellungHandler.aktuelleBestellung.bestellung[t]}"
+								id="anzahl" />
+						</td>
+					</tr>
+
+				</ui:repeat>
+				<tr>
+					<td>Gesammtsumme:</td>
+					<td>#{bestellungHandler.aktuelleBestellung.gesammtsumme}</td>
+				</tr>
+			</table>
+			<h:button value="Weiter im Bestellvorgang" outcome="kontaktformular.xhtml"></h:button>
+
+		</ui:define>
+
+	</body>
+
 
 </ui:composition>
 </html>

@@ -10,6 +10,17 @@ public class Bestellung implements Serializable {
 	
 	private Kunde kunde;
 	
+	private double gesammtsumme = 0;
+	
+	public String getGesammtsumme() {
+		return String.valueOf(this.gesammtsumme);
+	}
+
+	public void setGesammtsumme(String gesammtsumme) {
+		this.gesammtsumme = this.gesammtsumme +=  Double.valueOf(gesammtsumme);
+		
+	}
+
 	private HashMap<String, Integer> bestellung;
 	
 	public HashMap<String, Integer> getBestellung() {

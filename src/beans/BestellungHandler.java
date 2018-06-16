@@ -1,6 +1,8 @@
 package beans;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,19 +23,40 @@ public class BestellungHandler extends Handler {
 	
 	//@ManagedProperty(value="#{kontakthandler.aktuelleKontaktdaten}")
 	public Bestellung aktuelleBestellung;
-	
+	private List<String> titel;
 	private String current_session;
 	
 	public BestellungHandler() {
 		
 	}
 	
+	public List<String> getTitel(){
+		
+		if(this.aktuelleBestellung==null) {
+			setAktuelleBestellung();
+		}
+		
+		this.titel = new ArrayList<String>(this.aktuelleBestellung.getBestellung().keySet());
+		return this.titel;		
+	}
+	
+	private void setSessionId() {
+		//Session-Id besorgen
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		this.current_session = session.getId();
+	}
+	
 	public Bestellung getAktuelleBestellung() {
 		return aktuelleBestellung;
 	}
 
-	public void setAktuelleBestellung() {
+	public String setAktuelleBestellung() {
 		
+		if(this.bestellungen==null) {
+			init();
+		}
+			
+		setSessionId();
 		
 			//Setzte Bestellung falls vorhanden
 			for(Bestellung b: this.bestellungen) {
@@ -69,20 +92,28 @@ public class BestellungHandler extends Handler {
 				}
 			}
 		
-		
+		return "warenkorb.xhtml";
 	}
 	
 	public String hinzufuegen() {
 		
-		//Vererbe Liste initialisieren
-		this.init();
+		if(this.buecher==null) {
+			init();
+		}
 		
-		//Session-Id besorgen
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-		this.current_session = session.getId();
-		///?????
+		setSessionId();
+		
 		Map<String,String> param_map = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		String titel = param_map.get("titel");
+		
+		Buch akt_buch = null;
+		
+		for ( Buch b :this.buecher) {
+			if(b.getTitel().equals(titel)) {
+				akt_buch= b;
+			}
+		}
+		
 		
 		//Bestellung setzten
 		if(this.aktuelleBestellung == null) {
@@ -99,6 +130,8 @@ public class BestellungHandler extends Handler {
 		else {
 				bestellung.put(titel, 1);
 		}	
+		
+		this.aktuelleBestellung.setGesammtsumme(akt_buch.getPreis());
 		
 		this.bestellungen.add(aktuelleBestellung);
 			

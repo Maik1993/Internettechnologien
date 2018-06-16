@@ -66,7 +66,7 @@ public class Warengruppe extends HttpServlet {
 		String buecher_gson = "";
 		String key = "lBenYS9JqrKN2ld8dlkmICXiEVmYQPaIWDKid762";
 		ArrayList<datenbank.Buch> array_buecher = new ArrayList<datenbank.Buch>();
-		ArrayList<String> isbns = new ArrayList();
+		ArrayList<String> isbns = new ArrayList<String>();
 		Gson json = new Gson();
 		TypeToken<List<datenbank.Buch>> list_type = new TypeToken<List<datenbank.Buch>>() {};
 		Set<String> genres = new TreeSet<String>();

@@ -22,6 +22,14 @@ public class BuchHandler extends Handler implements Serializable {
 	public BuchHandler() {
 		
 	}
+	
+	public String getPreis() {
+		return this.buch.getRowData().getPreis();
+	}
+	
+	public String getIsbn() {
+		return this.buch.getRowData().getISBN();
+	}
 
 	public void setBuch_titel(String titel) {
 		
