@@ -33,16 +33,7 @@ public class Bestellung implements Serializable {
 
 	public Bestellung() {		
 	}
-	/*
-	public Bestellung(Buch[] bücher) {
-		this.setBücher(bücher);
-	}
-	*/
-	
-	/*
-	 * Getter und Setter 
-	 * Kontaktdaten
-	 */
+
 	
 	public Kunde getKunde() {
 		return kunde;
@@ -54,19 +45,6 @@ public class Bestellung implements Serializable {
 
 	
 	
-	/*
-	 * Bezahlungsart
-	 */
 
-/*
-	public Buch[] getBücher() {
-		return bücher;
-	}
-
-	public void setBücher(Buch[] bücher) {
-		this.bücher = bücher;
-	}
-
-*/
 	
 }

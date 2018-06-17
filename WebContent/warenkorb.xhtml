@@ -19,34 +19,34 @@
 
 
 
-			<table style="text-align:center;border:1px solid black">
+			<table style="text-align:left;border:1px; width: 700px; ">
 				<tr>
-					<th>Titel</th>
-					<th>Preis</th>
-					<th>ISBN</th>
-					<th>Anzahl</th>
+					<th><h3>Titel</h3></th>
+					<th><h3>Preis</h3></th>
+					<th><h3>ISBN</h3></th>
+					<th><h3>Anzahl</h3></th>
 				</tr>
 				<ui:repeat var="t" value="#{bestellungHandler.titel}">
 
 
 					<tr >
-						<td><h:outputText value="#{t}" id="titel" />
+						<td><h4><h:outputText value="#{t}" id="titel" />
 							#{bHandler.setBuch_titel(t)}
-						</td>
+						</h4></td>
 						
 
-						<td><h:outputText value="#{bHandler.preis}" id="preis" /></td>
-						<td><h:outputText value="#{bHandler.isbn}" id="isbn" /></td>
-						<td><h:outputText
+						<td><h4><h:outputText value="#{bHandler.preis}" id="preis" /></h4></td>
+						<td><h4><h:outputText value="#{bHandler.isbn}" id="isbn" /></h4></td>
+						<td><h4><h:outputText
 								value="#{bestellungHandler.aktuelleBestellung.bestellung[t]}"
 								id="anzahl" />
-						</td>
+						</h4></td>
 					</tr>
 
 				</ui:repeat>
 				<tr>
-					<td>Gesammtsumme:</td>
-					<td>#{bestellungHandler.aktuelleBestellung.gesammtsumme}</td>
+					<td><H4>Gesammtsumme:</H4></td>
+					<td><H4>#{bestellungHandler.aktuelleBestellung.gesammtsumme}</H4></td>
 				</tr>
 			</table>
 			<h:button value="Weiter im Bestellvorgang" outcome="kontaktformular.xhtml"></h:button>

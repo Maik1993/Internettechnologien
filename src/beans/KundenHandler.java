@@ -35,7 +35,7 @@ public class KundenHandler extends Handler{
 		this.kunden.add(this.kunde);
 		this.kvs.put(this.key_kunde, this.json.toJson(this.kunden));
 		
-		return "kontaktformular.xhtml";
+		return "ausgabeBestellung.xhtml";
 	}
 	
 }

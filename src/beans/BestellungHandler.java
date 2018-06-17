@@ -21,14 +21,16 @@ import datenbank.Buch;
 @RequestScoped
 public class BestellungHandler extends Handler {
 	
-	//@ManagedProperty(value="#{kontakthandler.aktuelleKontaktdaten}")
+	
 	public Bestellung aktuelleBestellung;
 	private List<String> titel;
 	private String current_session;
 	
+	
 	public BestellungHandler() {
 		
 	}
+	
 	
 	public List<String> getTitel(){
 		
