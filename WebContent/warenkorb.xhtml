@@ -37,9 +37,16 @@
 
 						<td><h4><h:outputText value="#{bHandler.preis}" id="preis" /></h4></td>
 						<td><h4><h:outputText value="#{bHandler.isbn}" id="isbn" /></h4></td>
-						<td><h4><h:outputText
+						<td><h4>
+						#{bestellungHandler.setAnz(bHandler.isbn)}
+						<h:commandButton action="#{bestellungHandler.inc}" value="+" ></h:commandButton>
+						<h:outputText
 								value="#{bestellungHandler.aktuelleBestellung.bestellung[t]}"
 								id="anzahl" />
+								
+								
+								<h:commandButton action="#{bestellungHandler.dec}"  value="-"></h:commandButton>
+								<h:commandButton action="#{bestellungHandler.del}"  value="Löschen"></h:commandButton>
 						</h4></td>
 					</tr>
 
