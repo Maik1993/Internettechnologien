@@ -30,33 +30,33 @@ public class BestellungHandler extends Handler {
 
 	}
 
-	public String inc() {
+	public String inc(String isbn) {
 		System.out.println("Funktionsaufruf:increment");
 		if (aktuelleBestellung != null) {
 			
 			HashMap<String, Integer> s = aktuelleBestellung.getBestellung();
-			int i = s.get(anz);
+			int i = s.get(isbn);
 			i++;
-			s.put(anz, i);
+			s.put(isbn, i);
 			aktuelleBestellung.setBestellung(s);
 		}
 		return "warenkorb.xhtml";
 	}
 
-	public String dec() {
+	public String dec(String isbn) {
 		System.out.println("Funktionsaufruf:Decrement");
 
 		if (aktuelleBestellung != null) {
 			HashMap<String, Integer> s = aktuelleBestellung.getBestellung();
-			int i = s.get(anz);
+			int i = s.get(isbn);
 			i--;
-			s.put(anz, i);
+			s.put(isbn, i);
 			aktuelleBestellung.setBestellung(s);
 		}
 		return "warenkorb.xhtml";
 	}
 	
-	public String del() {
+	public String del(String isbn) {
 		//toDo
 		
 		return "warenkorb.xhtml";
@@ -186,5 +186,11 @@ public class BestellungHandler extends Handler {
 		System.out.println("Set anz: " + anz);
 		this.anz = anz;
 	}
-
+	public String bestellungEnde() {
+		String kb = this.key_bestellung;
+		this.aktuelleBestellung.getBestellung().clear();
+		this.kvs.put(kb, this.json.toJson(this.bestellungen));
+		
+		return "ende.xhtml";
+	}
 }

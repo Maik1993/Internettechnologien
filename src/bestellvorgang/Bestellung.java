@@ -43,6 +43,14 @@ public class Bestellung implements Serializable {
 		this.kunde = kunde;
 	}
 
+	public void clear() {
+		this.kunde.clear();
+		this.bestellung.clear();
+		
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 

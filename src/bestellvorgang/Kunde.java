@@ -116,5 +116,21 @@ public class Kunde implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public void clear() {
+		this.bank ="";
+		this.email ="";
+		this.hausnummer ="";
+		this.iban = "";
+		this.kontoinhaber ="";
+		this.nachname="";
+		this.plz ="";
+		this.sessionId ="";
+		this.stadt = "";
+		this.strasse ="";
+		this.vorname="";
+		// TODO Auto-generated method stub
+		
 	}	
 }

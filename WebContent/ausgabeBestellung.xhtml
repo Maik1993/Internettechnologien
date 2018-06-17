@@ -26,9 +26,8 @@
 						<td><h:outputText value="#{t}" id="titel" />
 							#{bHandler.setBuch_titel(t)}
 						</td>
-						<td><h:outputText value="#{bHandler.preis}" id="preis" /></td>
-						<td><h:outputText value="#{bHandler.isbn}" id="isbn" /></td>
-						<td><h:outputText
+						<td>Preis: <h:outputText value="#{bHandler.preis}" id="preis" /></td>
+						<td>Anzahl: <h:outputText
 								value="#{bestellungHandler.aktuelleBestellung.bestellung[t]}"
 								id="anzahl" />
 						</td>
