@@ -13,11 +13,19 @@ public class Bestellung implements Serializable {
 	private double gesammtsumme = 0;
 	
 	public String getGesammtsumme() {
+		
+		this.gesammtsumme = (double) Math.round((this.gesammtsumme*100))/100;
+			
 		return String.valueOf(this.gesammtsumme);
 	}
 
-	public void setGesammtsumme(String gesammtsumme) {
-		this.gesammtsumme = this.gesammtsumme +=  Double.valueOf(gesammtsumme);
+	public void setGesammtsumme(String gesammtsumme, String op) {
+		if(op.equals("add")) {
+			this.gesammtsumme = this.gesammtsumme +=  Double.valueOf(gesammtsumme);
+		}
+		else if(op.equals("sub")) {
+			this.gesammtsumme = this.gesammtsumme -=  Double.valueOf(gesammtsumme);
+		}
 		
 	}
 

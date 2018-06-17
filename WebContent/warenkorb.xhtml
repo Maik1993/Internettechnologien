@@ -7,6 +7,7 @@
 <h:head>
 	<link rel="stylesheet" href="Grobspezifikation/css/bootstrap.min.css"
 		type="text/css" media="all" />
+		<title>Warenkorb</title>
 </h:head>
 
 <ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
@@ -14,10 +15,6 @@
 	<body>
 
 		<ui:define name="content">
-
-
-
-
 
 			<table style="text-align:left;border:1px; width: 700px; ">
 				<tr>
@@ -38,15 +35,22 @@
 						<td><h4><h:outputText value="#{bHandler.preis}" id="preis" /></h4></td>
 						<td><h4><h:outputText value="#{bHandler.isbn}" id="isbn" /></h4></td>
 						<td><h4>
-						#{bestellungHandler.setAnz(bHandler.isbn)}
-						<h:commandButton action="#{bestellungHandler.inc(bHandler.isbn)}" value="+" />
+						<h:form>
+						<h:commandButton action="#{bestellungHandler.inc}" value="+" >
+								<f:param name ="titel"  value="#{bHandler.buch_titel}"/> 
+						</h:commandButton>
 						<h:outputText
 								value="#{bestellungHandler.aktuelleBestellung.bestellung[t]}"
 								id="anzahl" />
 								
 								
-								<h:commandButton action="#{bestellungHandler.dec(bHandler.isbn)}"  value="-"/>
-								<h:commandButton action="#{bestellungHandler.del(bHandler.isbn)}"  value="Löschen"/>
+								<h:commandButton action="#{bestellungHandler.dec}"  value="-">
+									<f:param name="titel" value="#{bHandler.buch_titel}" />
+								</h:commandButton>
+								<h:commandButton action="#{bestellungHandler.del}"  value="Löschen">
+									<f:param name="titel" value="#{t}"/>
+								</h:commandButton>
+								</h:form>
 						</h4></td>
 					</tr>
 
