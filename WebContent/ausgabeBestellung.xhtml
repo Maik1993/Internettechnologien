@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	
+</h:head>
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+	<body>
+
+		<ui:define name="content">
+		
+			<h:form  >
+				<table>
+				
+					<tr><th><H3>Angaben zur Bestellung:</H3></th></tr>
+					<tr><td></td></tr>
+					<tr><td><h4>Warenkorb</h4></td></tr>
+					<tr><td></td></tr>
+					<ui:repeat var="t" value="#{bestellungHandler.titel}">
+					<tr >
+						<td><h:outputText value="#{t}" id="titel" />
+							#{bHandler.setBuch_titel(t)}
+						</td>
+						<td><h:outputText value="#{bHandler.preis}" id="preis" /></td>
+						<td><h:outputText value="#{bHandler.isbn}" id="isbn" /></td>
+						<td><h:outputText
+								value="#{bestellungHandler.aktuelleBestellung.bestellung[t]}"
+								id="anzahl" />
+						</td>
+					</tr>
+					</ui:repeat>
+					<tr>
+						<td><h:outputLabel for="geamtsumme">Gesamtsumme:</h:outputLabel></td>
+						<td><h:outputText value="#{bestellungHandler.aktuelleBestellung.gesammtsumme}" /></td>
+					</tr>
+					<tr><td></td></tr>
+					<tr><td><h4>Kontaktinformationen</h4></td></tr>
+					<tr><td></td></tr>
+					<tr>
+						<td><h:outputLabel for="vorname">Vorname:</h:outputLabel></td>
+						<td><h:outputText value="#{kHandler.kunde.vorname}" id="vorname" /></td>					
+					</tr>
+					<tr>
+						<td><h:outputLabel for="nachname">Nachname:</h:outputLabel></td>
+						<td><h:outputText value="#{kHandler.kunde.nachname}" id="nachname" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel for="email">Email:</h:outputLabel></td>
+						<td><h:outputText value="#{kHandler.kunde.email}" id="email" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel for="strasse">Straße:</h:outputLabel></td>
+						<td><h:outputText value="#{kHandler.kunde.strasse}" id="strasse" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel for="hausnummer">Hausnummer:</h:outputLabel></td>
+						<td><h:outputText value="#{kHandler.kunde.hausnummer}" id="hausnummer" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel for="stadt">Stadt:</h:outputLabel></td>
+						<td><h:outputText value="#{kHandler.kunde.stadt}" id="stadt" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel for="plz">Postleitzahl:</h:outputLabel></td>
+						<td><h:outputText value="#{kHandler.kunde.plz}" id="plz" /></td>
+					</tr>
+					<tr><td></td></tr>
+					<tr><td><h4>Zahlungsinformationen</h4></td></tr>
+					<tr><td></td></tr>
+					<tr>
+						<td><h:outputLabel for="kontoinhaber">Kontoinhaber:</h:outputLabel></td>
+						<td><h:outputText value="#{kHandler.kunde.kontoinhaber}" id="kontoinhaber" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel for="bank">Kreditinstitut:</h:outputLabel></td>
+						<td><h:outputText value="#{kHandler.kunde.bank}" id="bank" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel for="iban">IBAN:</h:outputLabel></td>
+						<td><h:outputText value="#{kHandler.kunde.iban}" id="iban" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><h:commandButton action="#{bestellungHandler.bestellungEnde}" value="Kostenpflichtig bestellen" /></td>
+					</tr>
+				</table><br></br>
+			
+			</h:form>
+		
+		</ui:define>			
+
+	</body>
+
+</ui:composition>
+</html>
