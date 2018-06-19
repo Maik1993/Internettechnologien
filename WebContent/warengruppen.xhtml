@@ -20,6 +20,7 @@
 }
 .col0{width: 1000px;}
 
+
 </style>
 
 </h:head>
@@ -31,27 +32,36 @@
 
 		<ui:define name="content" id="warengruppe">
 
-			<table style="border: 1px; text-align: left; width: 700px;">
+			<table style="border: 1px; text-align: left; width: 800px;">
 				<tr>
-					<th class="theader" colspan="4"><h2>Warengruppe: #{wgHandler.fachbereich}</h2></th>
+					<th class="theader" colspan="6"><h2>Warengruppe: #{wgHandler.fachbereich}</h2></th>
 				</tr>
 				<tr>
+					<th><h3>Bild</h3></th>
 					<th><h3>Titel</h3></th>
-					<th><h3> Autor </h3></th>
+					<th><h3>Autor</h3></th>
 					<th><h3>Preis</h3></th>
 					<th><h3>ISBN</h3></th>
+					
 				
 				</tr>
 	
 				<ui:repeat var="b" value="#{wgHandler.fachbereich_buecher}" >
-					
+					<!-- <h:graphicImage value="#{b.bild}"/> -->
 					<tr>
 						<h:form style="text-align:left;">
-							<td ><h4>#{b.titel}</h4></td>
-							<td ><h4>#{b.autor}</h4></td>
-							<td ><h4>#{b.preis}</h4></td>
-							<td><h4><h:commandLink value="#{b.ISBN}" action="details.xhtml">
+							<td ><h:graphicImage value="#{b.bild}" height="70" width="70"/></td>
+							<td ><h4><h:commandLink value="#{b.titel}" action="details.xhtml">
 								<f:setPropertyActionListener value="#{b.ISBN}" target="#{bHandler.isbn}"></f:setPropertyActionListener>
+							</h:commandLink></h4></td>
+							<td ><h4><h:commandLink value="#{b.autor}" action="details.xhtml">
+								<f:setPropertyActionListener value="#{b.ISBN}" target="#{bHandler.isbn}"></f:setPropertyActionListener>
+							</h:commandLink></h4></td>
+							<td ><h4><h:commandLink value="#{b.preis}" action="details.xhtml">
+								<f:setPropertyActionListener value="#{b.ISBN}" target="#{bHandler.isbn}"></f:setPropertyActionListener>
+							</h:commandLink></h4></td>
+							<td><h4><h:commandLink value="Details"  action="details.xhtml">
+								<f:setPropertyActionListener value="#{b.ISBN}" target="#{bHandler.isbn}"></f:setPropertyActionListener> 
 							</h:commandLink></h4></td>
 						</h:form>
 					</tr>

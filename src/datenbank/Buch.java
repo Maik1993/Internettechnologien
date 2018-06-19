@@ -12,8 +12,9 @@ public class Buch {
 	private String Jahr;
 	private String Auflage;
 	private String Inhalt;
+	private String Bild;
 	
-	public Buch(String fachbereich, String titel, String autor, String preis, String isbn, String jahr, String auflage, String inhalt) {
+	public Buch(String fachbereich, String titel, String autor, String preis, String isbn, String jahr, String auflage, String inhalt, String bild) {
 		this.Fachbereich = fachbereich;
 		this.Titel = titel;
 		this.Autor = autor;
@@ -22,8 +23,16 @@ public class Buch {
 		this.Jahr = jahr;
 		this.Auflage = auflage;
 		this.Inhalt = inhalt;	
+		this.Bild = bild;
 	}
 	
+	public String getBild() {
+		return Bild;
+	}
+
+	public void setBild(String bild) {
+		Bild = bild;
+	}
 	
 	
 	public String getFachbereich() {
@@ -92,7 +101,7 @@ public class Buch {
 
 	public String toString() {
 		return "{"+"Fachbereich"+":"+this.Fachbereich+","+"Titel"+":"+this.Titel+","+"Autor"+":"+this.Autor+","+"Preis"+":"+this.Preis+","+
-				"ISBN"+":"+this.ISBN+","+"Jahr"+":"+this.Jahr+","+"Auflage"+":"+this.Auflage+","+"Inhalt"+":"+this.Inhalt+"}";
+				"ISBN"+":"+this.ISBN+","+"Jahr"+":"+this.Jahr+","+"Auflage"+":"+this.Auflage+","+"Inhalt"+":"+this.Inhalt+","+"Bild"+":"+this.Bild+"}";
 	}
 
 }

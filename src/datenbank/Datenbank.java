@@ -91,6 +91,7 @@ public class Datenbank extends HttpServlet {
 		String Jahr = request.getParameter("Jahr");
 		String Auflage = request.getParameter("Auflage");
 		String Inhalt = request.getParameter("Inhalt");
+		String Bild	= request.getParameter("Bild");
 		
 		
 		boolean contains = false;
@@ -105,7 +106,7 @@ public class Datenbank extends HttpServlet {
 		}
 
 		if(!contains) {
-			this.buecher.add(new Buch(Fachbereich, Titel, Autor, Preis, ISBN, Jahr, Auflage, Inhalt));
+			this.buecher.add(new Buch(Fachbereich, Titel, Autor, Preis, ISBN, Jahr, Auflage, Inhalt,Bild));
 			String json_buecher = this.json.toJson(this.buecher);
 
 			kvs.put(this.key, json_buecher);
@@ -125,7 +126,7 @@ public class Datenbank extends HttpServlet {
 			String current_param = param.nextElement();
 			String current_val = request.getParameter(current_param);
 
-			if ((current_param.equals("Fachbereich") || current_param.equals("Titel") || current_param.equals("Autor")
+			if ((current_param.equals("Fachbereich") || current_param.equals("Titel") || current_param.equals("Autor") || current_param.equals("Bild")
 					|| current_param.equals("Inhalt")) && !hasError) {
 				hasError = current_val.length() == 0;
 			} else if ((current_param.equals("Preis")) && !hasError) {
@@ -218,6 +219,7 @@ public class Datenbank extends HttpServlet {
 			session.setAttribute("Jahr", request.getParameter("Jahr"));
 			session.setAttribute("Auflage", request.getParameter("Auflage"));
 			session.setAttribute("Inhalt", request.getParameter("Inhalt"));
+			session.setAttribute("Bild", request.getParameter("Bild"));
 
 		} else {
 			session.setAttribute("error", this.error);
@@ -229,6 +231,7 @@ public class Datenbank extends HttpServlet {
 			session.setAttribute("Jahr", "");
 			session.setAttribute("Auflage", "");
 			session.setAttribute("Inhalt", "");
+			session.setAttribute("Bild", "");
 		}
 		try {
 			req.forward(request, response);

@@ -24,7 +24,9 @@ public class BuchHandler extends Handler implements Serializable {
 		
 	}
 	
-	
+	public String getBild() {
+		return this.buch.getRowData().getBild();
+	}
 	
 	public String getPreis() {
 		return this.buch.getRowData().getPreis();

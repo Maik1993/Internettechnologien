@@ -10,6 +10,7 @@
 	String Jahr = "";
 	String Auflage = "";
 	String Inhalt = "";
+	String Bild = "";
 	String key = "lBenYS9JqrKN2ld8dlkmICXiEVmYQPaIWDKid762";
 	String KVS = "";
 	try {
@@ -22,6 +23,7 @@
 		Jahr = (String) session.getAttribute("Jahr");
 		Auflage = (String) session.getAttribute("Auflage");
 		Inhalt = (String) session.getAttribute("Inhalt");
+		Bild = (String) session.getAttribute("Bild");
 		KVS = (String) session.getAttribute("KVS");
 
 	} catch (NullPointerException e) {
@@ -47,8 +49,7 @@
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark"> <!-- Brand -->
 	<a class="navbar-brand" href="#">D2</a> <!-- Oberste Leiste -->
 	<ul class="navbar-nav mr-auto">
-		<li class="nav-item active"><a class="nav-link"
-			href="index.html">Startseite</a></li>
+		<li class="nav-item active"><a class="nav-link" href="index.html">Startseite</a></li>
 	</ul>
 
 
@@ -175,8 +176,16 @@
 											value=<%=Inhalt%>>
 									</div>
 								</div>
+
 							</div>
 							<div class="row">
+								<div class="col-lg-3">
+									<div class="form-group">
+										<!-- Inhalt -->
+										<label for="formGroupExampleInput">Bild: </label> <br> <input
+											type="text" class="form-control" name="Bild" value=<%=Bild%>>
+									</div>
+								</div>
 								<div class="col-lg-3">
 									<input type="submit" id="login_button" value="Absenden"
 										class="btn btn-primary btn-lg btn-block login-button">
@@ -212,56 +221,58 @@
 
 				<div class="row"></div>
 
-			
-			<div class="row">
-				<div class="col-lg-12">
-					<h3>Bücher-Datenbank</h3>
-					<%@ page import="de.imut.ec.keyvaluestore.KeyValueStore"%>
-					 <%
-						KeyValueStore kvs = new KeyValueStore();
-						String sKVS = kvs.get(key);
-						String[] s = sKVS.split("}");
-					%>
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Fachbereich</th>
-								<th>Titel</th>
-								<th>Autor</th>
-								<th>Preis</th>
-								<th>ISBN</th>
-								<th>Jahr</th>
-								<th>Auflage</th>
 
-							</tr>
-						</thead>
-						<tbody>
-							<%
-								for (int i = s.length - 1; i > 0; i--) {
-									String[] sBuch = s[i].split(",");
-							%>
-							<tr>
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>Bücher-Datenbank</h3>
+						<%@ page import="de.imut.ec.keyvaluestore.KeyValueStore"%>
+						<%
+							KeyValueStore kvs = new KeyValueStore();
+							String sKVS = kvs.get(key);
+							String[] s = sKVS.split("}");
+						%>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Fachbereich</th>
+									<th>Titel</th>
+									<th>Autor</th>
+									<th>Preis</th>
+									<th>ISBN</th>
+									<th>Jahr</th>
+									<th>Auflage</th>
+									<th>Inhalt</th>
+									<th>Bild</th>
+
+								</tr>
+							</thead>
+							<tbody>
 								<%
-									for (int j = 1; j < sBuch.length; j++) {
-											String output = (String) sBuch[j];
-											if (j == 4) {
-												output = output + " Euro";
-											}
-											String tmp = output.replaceAll("[^a-zA-Z 0-9 .: ]", "");
-											output = tmp.replace(":", ": ");
+									for (int i = s.length - 1; i > 0; i--) {
+										String[] sBuch = s[i].split(",");
 								%>
-								<td><%=output%></td>
+								<tr>
+									<%
+										for (int j = 1; j < sBuch.length; j++) {
+												String output = (String) sBuch[j];
+												if (j == 4) {
+													output = output + " Euro";
+												}
+												String tmp = output.replaceAll("[^a-zA-Z 0-9 .: ]", "");
+												output = tmp.replace(":", ": ");
+									%>
+									<td><%=output%></td>
+									<%
+										}
+									%>
+								</tr>
 								<%
 									}
 								%>
-							</tr>
-							<%
-								}
-							%>
-						</tbody>
-					</table>
+							</tbody>
+						</table>
+					</div>
 				</div>
-			</div>
 			</div>
 		</div>
 	</div>
