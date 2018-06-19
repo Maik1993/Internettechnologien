@@ -23,21 +23,21 @@
 					<th><h3>ISBN</h3></th>
 					<th><h3>Anzahl</h3></th>
 				</tr>
-				<ui:repeat var="t" value="#{bestellungHandler.titel}">
+				<ui:repeat var="t" value="#{bestellungHandler.isbn}">
 
-
+					#{bHandler.setIsbn(t)}
 					<tr >
-						<td><h4><h:outputText value="#{t}" id="titel" />
-							#{bHandler.setBuch_titel(t)}
+						<td><h4><h:outputText value="#{bHandler.titel}" id="titel" />
+							
 						</h4></td>
 						
 
 						<td><h4><h:outputText value="#{bHandler.preis}" id="preis" /></h4></td>
-						<td><h4><h:outputText value="#{bHandler.isbn}" id="isbn" /></h4></td>
+						<td><h4><h:outputText value="#{t}" id="isbn" /></h4></td>
 						<td><h4>
 						<h:form>
 						<h:commandButton action="#{bestellungHandler.inc}" value="+" >
-								<f:param name ="titel"  value="#{bHandler.buch_titel}"/> 
+								<f:param name ="isbn"  value="#{t}"/> 
 						</h:commandButton>
 						<h:outputText
 								value="#{bestellungHandler.aktuelleBestellung.bestellung[t]}"
@@ -45,10 +45,10 @@
 								
 								
 								<h:commandButton action="#{bestellungHandler.dec}"  value="-">
-									<f:param name="titel" value="#{bHandler.buch_titel}" />
+									<f:param name="isbn" value="#{t}" />
 								</h:commandButton>
 								<h:commandButton action="#{bestellungHandler.del}"  value="Löschen">
-									<f:param name="titel" value="#{t}"/>
+									<f:param name="isbn" value="#{t}"/>
 								</h:commandButton>
 								</h:form>
 						</h4></td>

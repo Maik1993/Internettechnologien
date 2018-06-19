@@ -17,41 +17,45 @@ public class BuchHandler extends Handler implements Serializable {
 	private static final long serialVersionUID = -3728967773495326294L;
 
 	private DataModel<Buch> buch;
-	private String buch_titel;
+	
+	private String isbn;
 
 	public BuchHandler() {
 		
 	}
 	
+	
+	
 	public String getPreis() {
 		return this.buch.getRowData().getPreis();
+	}
+		
+	public void setIsbn(String ISBN) {
+		
+		if(this.buecher == null) {
+			init();
+		}
+		
+		this.isbn = ISBN;
+		setBuch();
 	}
 	
 	public String getIsbn() {
 		return this.buch.getRowData().getISBN();
 	}
 
-	public void setBuch_titel(String titel) {
-		
-		if(this.buecher == null) {
-			init();
-		}
-		
-		this.buch_titel = titel;
-		setBuch();
+	public String getTitel() {
+		return this.buch.getRowData().getTitel();
 	}
 
-	public String getBuch_titel() {
-		return this.buch_titel;
-	}
-
+	
 	private void setBuch() {
 
 		this.buch = new ListDataModel<Buch>();
 		ArrayList<Buch> attr_buch = new ArrayList<Buch>();
 
 		for (Buch b : this.buecher) {
-			if (b.getTitel().equals(this.buch_titel)) {
+			if (b.getISBN().equals(this.isbn)) {
 				
 				attr_buch.add(b);
 				this.buch.setWrappedData(attr_buch);

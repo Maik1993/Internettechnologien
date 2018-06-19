@@ -58,8 +58,8 @@
 			</h:column>
 			<h:column>
 				<h:commandButton action="#{bestellungHandler.hinzufuegen}"  value="Zum Warenkorb hinzufügen">
-					<f:param name="titel" value="#{buch.titel}" />
-					<f:param name="preis" value="#{buch.preis}" />
+					<f:param name="isbn" value="#{buch.ISBN}" />
+				
 				</h:commandButton>
 			</h:column>
 				</h:dataTable>

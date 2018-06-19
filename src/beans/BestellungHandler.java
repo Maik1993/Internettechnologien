@@ -22,113 +22,147 @@ import datenbank.Buch;
 public class BestellungHandler extends Handler {
 
 	public Bestellung aktuelleBestellung;
-	private List<String> titel;
+	private List<String> isbn;
 	private String current_session;
 	private String anz;
 	private Map<String, String> requestParameterMap;
 	private Buch buch ;
 	
-	private void setBuch(String titel) {
+	
+	
+	
+	private void setBuch(String isbn) {
 		
 		for(Buch b: this.buecher) {
-			if(b.getTitel().equals(titel)) {
+			if(b.getISBN().equals(isbn)) {
 				this.buch = b;
 			}
 		}
 	}
 	
+	
+	
 	public BestellungHandler() {
 
 	}
 
+	
+	
+	
+	
 	public String inc() {
 
 		this.requestParameterMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 
-		String titel = this.requestParameterMap.get("titel");
-		setBuch(titel);
+		String isbn = this.requestParameterMap.get("isbn");
+		setBuch(isbn);
 
 		if (aktuelleBestellung == null) {
 			setAktuelleBestellung();
 		}
 
 		Map<String, Integer> bestellung = this.aktuelleBestellung.getBestellung();
-		int anzahl = bestellung.get(titel) + 1;
-		bestellung.put(titel, anzahl);
+		int anzahl = bestellung.get(isbn) + 1;
+		bestellung.put(isbn, anzahl);
 		this.aktuelleBestellung.setGesammtsumme(this.buch.getPreis(), "add");
 		this.bestellungen.add(aktuelleBestellung);
 		this.kvs.put(this.key_bestellung, this.json.toJson(this.bestellungen));
 		return "warenkorb.xhtml";
 	}
 
+	
+	
+	
+	
 	public String dec() {
 
 		this.requestParameterMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 
-		String titel = this.requestParameterMap.get("titel");
-		setBuch(titel);
+		String isbn = this.requestParameterMap.get("isbn");
+		setBuch(isbn);
 		
 		if (aktuelleBestellung == null) {
 			setAktuelleBestellung();
 		}
 		Map<String, Integer> bestellung = this.aktuelleBestellung.getBestellung();
 		
-		int anzahl = bestellung.get(titel);
+		int anzahl = bestellung.get(isbn);
 		
 		if (anzahl >  1) {
-			bestellung.put(titel, aktuelleBestellung.getBestellung().get(titel) - 1);
+			bestellung.put(isbn, aktuelleBestellung.getBestellung().get(isbn) - 1);
 			this.aktuelleBestellung.setGesammtsumme(this.buch.getPreis(), "sub");
 			this.bestellungen.add(aktuelleBestellung);
 			this.kvs.put(this.key_bestellung, this.json.toJson(this.bestellungen));
 		}
-		else if(bestellung.get(titel) == 1) {
+		else if(bestellung.get(isbn) == 1) {
 			del();
 		}
 
 		return "warenkorb.xhtml";
 	}
 
+	
+	
 	public String del() {
 		
 		this.requestParameterMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		
-		String titel = this.requestParameterMap.get("titel");	
-		setBuch(titel);
+		String isbn = this.requestParameterMap.get("isbn");	
+		setBuch(isbn);
 		
 		if(this.aktuelleBestellung==null) {
 			setAktuelleBestellung();
 		}
 		Map<String, Integer> bestellung = this.aktuelleBestellung.getBestellung();
 		
-		int anzahl = bestellung.get(titel);
+		int anzahl = bestellung.get(isbn);
 		
 		this.aktuelleBestellung.setGesammtsumme(String.valueOf(Double.parseDouble(this.buch.getPreis())*anzahl), "sub");
-		bestellung.remove(titel);
+		bestellung.remove(isbn);
 		
 		this.bestellungen.add(aktuelleBestellung);
 		kvs.put(this.key_bestellung, this.json.toJson(this.bestellungen));
 		return "warenkorb.xhtml";
 	}
 
-	public List<String> getTitel() {
+	
+	
+	
+	
+	public List<String> getIsbn() {
 
 		if (this.aktuelleBestellung == null) {
 			setAktuelleBestellung();
 		}
 
-		this.titel = new ArrayList<String>(this.aktuelleBestellung.getBestellung().keySet());
-		return this.titel;
+		this.isbn = new ArrayList<String>(this.aktuelleBestellung.getBestellung().keySet());
+		return this.isbn;
 	}
 
+	
+	
+	
+	
 	private void setSessionId() {
 		// Session-Id besorgen
 		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		this.current_session = session.getId();
 	}
+	
+	
+	
+	
+	
 
 	public Bestellung getAktuelleBestellung() {
 		return aktuelleBestellung;
 	}
+	
+	
+	
+	
+	
+	
 
 	public String setAktuelleBestellung() {
 
@@ -174,6 +208,12 @@ public class BestellungHandler extends Handler {
 
 		return "warenkorb.xhtml";
 	}
+	
+	
+	
+	
+	
+	
 
 	public String hinzufuegen() {
 
@@ -184,9 +224,9 @@ public class BestellungHandler extends Handler {
 		setSessionId();
 
 		Map<String, String> param_map = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		String titel = param_map.get("titel");
+		String isbn = param_map.get("isbn");
 
-		setBuch(titel);
+		setBuch(isbn);
 
 		// Bestellung setzten
 		if (this.aktuelleBestellung == null) {
@@ -196,11 +236,11 @@ public class BestellungHandler extends Handler {
 		HashMap<String, Integer> bestellung = this.aktuelleBestellung.getBestellung();
 
 		// Bestellung enthält Buchtitel
-		if (bestellung.containsKey(titel)) {
-			bestellung.put(titel, bestellung.get(titel) + 1);
+		if (bestellung.containsKey(isbn)) {
+			bestellung.put(isbn, bestellung.get(isbn) + 1);
 		} // Nicht vorhandern, ersten Eintrag setzten
 		else {
-			bestellung.put(titel, 1);
+			bestellung.put(isbn, 1);
 		}
 
 		this.aktuelleBestellung.setGesammtsumme(this.buch.getPreis(), "add");
@@ -211,7 +251,12 @@ public class BestellungHandler extends Handler {
 
 		return "warenkorb.xhtml";
 	}
-
+	
+	
+	
+	
+	
+	/*
 	public String speichern() {
 		Logger.getAnonymousLogger().log(Level.INFO, "speichern() [1] mit " + aktuelleBestellung + "' aufgerufen");
 
@@ -219,16 +264,27 @@ public class BestellungHandler extends Handler {
 
 		return "/ausgabe.xhtml";
 	}
-
+	 */
+	
+	
+	
+	
 	public String getAnz() {
 		return anz;
 	}
+	
+	
+	
 
 	public void setAnz(String anz) {
 		System.out.println("Set anz: " + anz);
 		this.anz = anz;
 	}
 
+	
+	
+	
+	
 	public String bestellungEnde() {
 		String kb = this.key_bestellung;
 		this.aktuelleBestellung.getBestellung().clear();
