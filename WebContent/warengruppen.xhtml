@@ -47,9 +47,15 @@
 					
 					<tr>
 						<h:form style="text-align:left;">
-							<td ><h4>#{b.titel}</h4></td>
-							<td ><h4>#{b.autor}</h4></td>
-							<td ><h4>#{b.preis}</h4></td>
+							<td ><h4><h:commandLink value="#{b.titel}" action="details.xhtml">
+								<f:setPropertyActionListener value="#{b.ISBN}" target="#{bHandler.isbn}"></f:setPropertyActionListener>
+							</h:commandLink></h4></td>
+							<td ><h4><h:commandLink value="#{b.autor}" action="details.xhtml">
+								<f:setPropertyActionListener value="#{b.ISBN}" target="#{bHandler.isbn}"></f:setPropertyActionListener>
+							</h:commandLink></h4></td>
+							<td ><h4><h:commandLink value="#{b.preis}" action="details.xhtml">
+								<f:setPropertyActionListener value="#{b.ISBN}" target="#{bHandler.isbn}"></f:setPropertyActionListener>
+							</h:commandLink></h4></td>
 							<td><h4><h:commandLink value="#{b.ISBN}" action="details.xhtml">
 								<f:setPropertyActionListener value="#{b.ISBN}" target="#{bHandler.isbn}"></f:setPropertyActionListener>
 							</h:commandLink></h4></td>
